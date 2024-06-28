@@ -18,6 +18,12 @@ function GameBoard({ timer, setGameState }) {
   const [invalidCells, setInvalidCells] = useState([]);
   const [gameOver, setGameOver] = useState(false);
 
+  useEffect(() => {
+    if (isBoardComplete(board)) {
+      setGameState("finished");
+    }
+  }, [board, setGameState]);
+
   const handleCellClick = (row, col) => {
     if (gameOver) return;
     if (
