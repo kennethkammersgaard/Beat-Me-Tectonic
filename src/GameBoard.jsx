@@ -124,7 +124,6 @@ function GameBoard({ timer, setGameState, resetGame }) {
         <button onClick={() => setGameState("game")}>New Game</button>
         <button onClick={() => setGameState("help")}>Help</button>
       </div>
-      <div className="Timer">Time: {formatTime(timer)}</div>
       <div className="board" style={{ maxWidth: "240px", margin: "20px auto" }}>
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => {
@@ -168,10 +167,6 @@ function GameBoard({ timer, setGameState, resetGame }) {
         )}
       </div>
       <NumberButtons
-        selectedNumber={selectedNumber}
-        onClick={handleNumberClick}
-        isNumberAvailable={isNumberAvailable}
-      />
       <div className="progress-bar">
         <div className="progress-bar-inner" style={{ width: `${Math.min((timer / 240) * 100, 100)}%` }}></div>
         <div className="progress-bar-marker" style={{ left: `${Math.min((timer / 240) * 100, 100)}%` }}></div>
