@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function TermsOfService({ setGameState }) {
+function TermsOfService() {
   return (
     <div className="terms-of-service">
       <h1>Terms of Service</h1>
@@ -12,7 +13,7 @@ function TermsOfService({ setGameState }) {
         <li>Vi er ikke ansvarlige for eventuelle tab eller skader, der opstår som følge af din brug af spillet.</li>
         <li>Du er ansvarlig for at holde din konto sikker.</li>
       </ol>
-      <button onClick={() => setGameState("game")}>Tilbage til spillet</button>
+      <Link to="/">Tilbage til spillet</Link>
     </div>
   );
 }

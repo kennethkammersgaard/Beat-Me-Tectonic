@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GameBoard from "./GameBoard";
 import HelpPage from "./HelpPage";
@@ -59,49 +60,55 @@ function App() {
   };
 
   return (
-    <div>
-      {!user && (
-        <FacebookLogin
-          appId="993897072203300"
-          autoLoad={true}
-          fields="name,location"
-          callback={responseFacebook}
-          render={renderProps => (
-            <button onClick={renderProps.onClick}>Login with Facebook</button>
-          )}
-        />
-      )}
-      {user && (
-        <div>
-          <h2>Welcome, {user.name} from {user.city}</h2>
-        </div>
-      )}
+    <Router>
       <div>
-        {gameState === "finished" && (
-          <div className="overlay">
-            <div className="overlay-inner">
-              <h2>Congratulations! You completed the game!</h2>
-              <p>Your time: {timer} seconds</p>
-              <button onClick={closePopup} data-testid="close-popup-button">Close</button>
-            </div>
+        {!user && (
+          <FacebookLogin
+            appId="993897072203300"
+            autoLoad={true}
+            fields="name,location"
+            callback={responseFacebook}
+            render={renderProps => (
+              <button onClick={renderProps.onClick}>Login with Facebook</button>
+            )}
+          />
+        )}
+        {user && (
+          <div>
+            <h2>Welcome, {user.name} from {user.city}</h2>
           </div>
         )}
-        <div className="centered-container">
-          <div className="App">
-            {gameState === "game" || gameState === "finished" ? (
-              <GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />
-            ) : gameState === "help" ? (
-              <HelpPage setGameState={setGameState} />
-            ) : (
-              <TermsOfService setGameState={setGameState} />
-            )}
+        <div>
+          {gameState === "finished" && (
+            <div className="overlay">
+              <div className="overlay-inner">
+                <h2>Congratulations! You completed the game!</h2>
+                <p>Your time: {timer} seconds</p>
+                <button onClick={closePopup} data-testid="close-popup-button">Close</button>
+              </div>
+            </div>
+          )}
+          <div className="centered-container">
+            <div className="App">
+              <Switch>
+                <Route exact path="/">
+                  <GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />
+                </Route>
+                <Route path="/help">
+                  <HelpPage setGameState={setGameState} />
+                </Route>
+                <Route path="/terms">
+                  <TermsOfService setGameState={setGameState} />
+                </Route>
+              </Switch>
+            </div>
+          </div>
+          <div className="footer" style={{ textAlign: 'center' }}>
+            <Link to="/terms">Vilkår for brug</Link>
           </div>
         </div>
-        <div className="footer" style={{ textAlign: 'center' }}>
-          <a href="/terms" onClick={(e) => { e.preventDefault(); showTerms(); }}>Vilkår for brug</a>
-        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
