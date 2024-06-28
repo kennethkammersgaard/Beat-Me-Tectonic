@@ -36,8 +36,8 @@ function App() {
   return (
     <div>
       {gameState === "finished" && (
-        <div className="popup">
-          <div className="popup-inner">
+        <div className="overlay">
+          <div className="overlay-inner">
             <h2>Congratulations! You completed the game!</h2>
             <p>Your time: {timer} seconds</p>
             <button onClick={closePopup}>Close</button>
