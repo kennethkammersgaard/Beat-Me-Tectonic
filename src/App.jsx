@@ -4,6 +4,7 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import GameBoard from "./GameBoard";
 import HelpPage from "./HelpPage";
 import TermsOfService from "./TermsOfService";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 function App() {
   const [gameState, setGameState] = useState("game");
@@ -94,11 +95,13 @@ function App() {
                 <Route path="/" element={<GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />} />
                 <Route path="/help" element={<HelpPage setGameState={setGameState} />} />
                 <Route path="/terms" element={<TermsOfService setGameState={setGameState} />} />
+                <Route path="/privacy" element={<PrivacyPolicy setGameState={setGameState} />} />
               </Routes>
             </div>
           </div>
           <div className="footer" style={{ textAlign: 'center' }}>
-            <Link to="/terms">Vilkår for brug</Link>
+            <Link to="/terms" style={{ marginRight: '10px' }}>Vilkår for brug</Link>
+            <Link to="/privacy">Privatlivspolitik</Link>
           </div>
         </div>
       </div>
