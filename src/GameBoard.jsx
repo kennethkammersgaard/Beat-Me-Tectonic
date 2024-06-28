@@ -103,8 +103,7 @@ function GameBoard({ timer, setGameState }) {
     setSelectedCell(null);
     setSelectedNumber(null);
     setInvalidCells([]);
-    setGameState("start");
-    setTimer(0);
+    setGameState("game");
   };
 
   const formatTime = (time) => {

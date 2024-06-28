@@ -27,6 +27,7 @@ function App() {
 
   const closePopup = () => {
     setGameState("game");
+    setTimer(0);
   };
 
   const finishGame = () => {
