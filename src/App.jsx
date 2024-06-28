@@ -28,11 +28,20 @@ function App() {
   const closePopup = () => {
     setGameState("game");
     setTimer(0);
+    setResetGame(true);
   };
 
   const finishGame = () => {
     setGameState("finished");
   };
+
+  const [resetGame, setResetGame] = useState(false);
+
+  useEffect(() => {
+    if (resetGame) {
+      setResetGame(false);
+    }
+  }, [resetGame]);
 
   return (
     <div>
@@ -48,7 +57,7 @@ function App() {
     <div className="centered-container">
       <div className="App">
         {gameState === "game" || gameState === "finished" ? (
-          <GameBoard timer={timer} setGameState={setGameState} />
+          <GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />
         ) : (
           <HelpPage setGameState={setGameState} />
         )}

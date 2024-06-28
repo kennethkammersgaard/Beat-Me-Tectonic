@@ -11,7 +11,7 @@ import {
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic";
 import "./App.css"; // Importer din CSS-fil
 
-function GameBoard({ timer, setGameState }) {
+function GameBoard({ timer, setGameState, resetGame }) {
   const [board, setBoard] = useState(INITIAL_BOARD);
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
@@ -23,6 +23,16 @@ function GameBoard({ timer, setGameState }) {
       setGameState("finished");
     }
   }, [board, setGameState]);
+
+  useEffect(() => {
+    if (resetGame) {
+      setBoard(INITIAL_BOARD);
+      setGameOver(false);
+      setSelectedCell(null);
+      setSelectedNumber(null);
+      setInvalidCells([]);
+    }
+  }, [resetGame]);
 
   const handleCellClick = (row, col) => {
     if (gameOver) return;
