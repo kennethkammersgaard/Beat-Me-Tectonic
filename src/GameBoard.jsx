@@ -28,7 +28,7 @@ function GameBoard({ timer, setGameState, resetGame }) {
 
 
   useEffect(() => {
-    if (resetGame) {
+    if (resetGame || timer >= 120) {
       setBoard(INITIAL_BOARD);
       setGameOver(false);
       setSelectedCell(null);
@@ -166,6 +166,9 @@ function GameBoard({ timer, setGameState, resetGame }) {
             );
           }),
         )}
+      </div>
+      <div className="progress-bar">
+        <div className="progress-bar-inner" style={{ width: `${Math.min((timer / 120) * 100, 100)}%` }}></div>
       </div>
       <NumberButtons
         selectedNumber={selectedNumber}
