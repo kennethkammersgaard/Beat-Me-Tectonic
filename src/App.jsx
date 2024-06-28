@@ -29,6 +29,7 @@ function App() {
     setGameState("game");
     setTimer(0);
     setResetGame(true);
+    setGameState("game");
   };
 
   const finishGame = () => {

@@ -107,14 +107,6 @@ function GameBoard({ timer, setGameState, resetGame }) {
     return !numbersInArea.includes(number);
   };
 
-  const resetGame = () => {
-    setBoard(INITIAL_BOARD);
-    setGameOver(false);
-    setSelectedCell(null);
-    setSelectedNumber(null);
-    setInvalidCells([]);
-    setGameState("game");
-  };
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
