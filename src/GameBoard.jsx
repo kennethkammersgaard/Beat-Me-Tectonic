@@ -117,20 +117,6 @@ function GameBoard({ timer, setGameState, resetGame }) {
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
-  const [buttonColor, setButtonColor] = useState('#4CAF50');
-
-  const getRandomColor = () => {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
-
-  const handleButtonClick = () => {
-    setButtonColor(getRandomColor());
-  };
 
   return (
     <div className="GameBoard">
@@ -191,12 +177,6 @@ function GameBoard({ timer, setGameState, resetGame }) {
         <div className="progress-bar-marker" style={{ left: `${Math.min((timer / 240) * 100, 100)}%` }}></div>
       </div>
       <div className="Timer">Time: {formatTime(timer)}</div>
-      <button
-        onClick={handleButtonClick}
-        style={{ backgroundColor: buttonColor, color: 'white', padding: '10px 20px', marginTop: '10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
-      >
-        Test
-      </button>
     </div>
   );
 }
