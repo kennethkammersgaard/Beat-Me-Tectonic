@@ -5,9 +5,8 @@ import App from '../App';
 test('displays end time in popup when game is finished', () => {
   render(<App />);
 
-  // Simulate finishing the game
-  fireEvent.click(screen.getByText('Help'));
-  fireEvent.click(screen.getByText('Close'));
+  // Simulate finishing the game by setting gameState to "finished"
+  fireEvent.click(screen.getByText('Finish Game'));
 
   // Check if the popup is displayed with the correct time
   expect(screen.getByText(/Congratulations! You completed the game!/)).toBeInTheDocument();
