@@ -6,6 +6,27 @@
   border: 2px solid black; /* Tilføj en 2px sort kant rundt om hele boardet */
 }
 
+.HelpPage {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.HelpPage h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.HelpPage h2 {
+  text-align: left;
+}
+
+.HelpPage ul, .HelpPage ol {
+  text-align: left;
+  display: inline-block;
+}
+
 .cell {
   display: flex;
   align-items: center;
