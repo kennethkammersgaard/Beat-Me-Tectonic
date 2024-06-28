@@ -19,7 +19,20 @@ export const isValidMove = (board, row, col) => {
         .filter((v) => v !== null);
     if (areaValues.filter((v) => v === value).length > 1) return false;
 
-    // Check adjacent cells
+    // Check if the number is already in the area
+    const numbersInArea = board
+        .flatMap((r, rowIndex) =>
+            r.map((cell, colIndex) => ({
+                value: cell,
+                area: AREAS[rowIndex][colIndex],
+            })),
+        )
+        .filter(
+            (cell) => cell.area === area && cell.value !== 0,
+        )
+        .map((cell) => cell.value);
+
+    if (numbersInArea.includes(value)) return false;
     for (let i = -1; i <= 1; i++) {
         for (let j = -1; j <= 1; j++) {
             if (i === 0 && j === 0) continue;
