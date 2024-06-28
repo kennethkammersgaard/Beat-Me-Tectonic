@@ -176,11 +176,6 @@ function GameBoard({ timer, setGameState, resetGame }) {
         <div className="progress-bar-marker" style={{ left: `${Math.min((timer / 240) * 100, 100)}%` }}></div>
       </div>
       <div className="Timer">Time: {formatTime(timer)}</div>
-      <NumberButtons
-        selectedNumber={selectedNumber}
-        onClick={handleNumberClick}
-        isNumberAvailable={isNumberAvailable}
-      />
     </div>
   );
 }
