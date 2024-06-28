@@ -45,7 +45,7 @@ export const isBoardComplete = (board) => {
 
 export const getCellBorderStyle = (row, col) => {
   const borderStyle = "1px solid #ccc";
-  const thickBorderStyle = "3px solid black";
+  const thickBorderStyle = "2px solid black";
 
   let borderTop = false;
   let borderRight = false;
