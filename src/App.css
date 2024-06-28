@@ -12,7 +12,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 0; /* Fjern gap mellem cellerne */
   border-collapse: collapse; /* Sikrer ingen overlapning mellem celler */
-  border: 4px solid black; /* Tilføj en 4px sort kant rundt om hele boardet */
+  border: 2px solid black; /* Tilføj en 4px sort kant rundt om hele boardet */
   margin: 0 auto; /* Centrerer boardet horisontalt */
 }
 
