@@ -106,6 +106,7 @@ function GameBoard({ timer, setGameState }) {
 
   return (
     <div className="GameBoard">
+      <h1>Beat Me Tectonic</h1>
       <div className="Timer">Time: {formatTime(timer)}</div>
       <div
         style={{
