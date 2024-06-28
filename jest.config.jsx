@@ -18,6 +18,7 @@ module.exports = {
     "**/?(*.)+(spec|test).[tj]s?(x)",
     "**/?(*.)+(spec|test).mjs", // Tilføjet for at inkludere .mjs filer
   ],
+  extensionsToTreatAsEsm: [".ts", ".tsx", ".jsx"],
   moduleFileExtensions: [
     "js",
     "jsx",
