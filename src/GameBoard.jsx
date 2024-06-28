@@ -9,7 +9,7 @@ import {
   AREAS,
 } from "./Constants";
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic";
-import "./App.css"; // Importer din CSS-fil
+import "./App.css";
 
 function GameBoard({ timer, setGameState, resetGame }) {
   const [board, setBoard] = useState(INITIAL_BOARD);
