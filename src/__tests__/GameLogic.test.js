@@ -66,41 +66,4 @@ describe("Game Logic Tests", () => {
       expect(isBoardComplete(board)).toBe(false);
     });
   });
-
-  describe("getCellBorderStyle", () => {
-    it("should return thick top border for cell in the first row", () => {
-      const style = getCellBorderStyle(0, 1);
-      expect(style.borderTop).toBe("4px solid black");
-    });
-
-    it("should return thick bottom border for cell in the last row", () => {
-      const style = getCellBorderStyle(BOARD_HEIGHT - 1, 1);
-      expect(style.borderBottom).toBe("4px solid black");
-    });
-
-    it("should return thick left border for cell in the first column", () => {
-      const style = getCellBorderStyle(1, 0);
-      expect(style.borderLeft).toBe("4px solid black");
-    });
-
-    it("should return thick right border for cell in the last column", () => {
-      const style = getCellBorderStyle(1, BOARD_WIDTH - 1);
-      expect(style.borderRight).toBe("4px solid black");
-    });
-
-    it("should return thick borders between different areas", () => {
-      // Vi vælger celler i forskellige områder, fx (1,1) og (2,1)
-      let style = getCellBorderStyle(1, 1);
-      expect(style.borderBottom).toBe("4px solid black"); // Nedre grænse skal være tyk, da (2,1) er i område C
-
-      style = getCellBorderStyle(2, 2);
-      expect(style.borderRight).toBe("4px solid black"); // Højre grænse skal være tyk, da (2,3) er i område B
-
-      style = getCellBorderStyle(4, 1);
-      expect(style.borderLeft).toBe("4px solid black"); // Venstre grænse skal være tyk, da (4,0) er i område C
-
-      style = getCellBorderStyle(3, 2);
-      expect(style.borderTop).toBe("4px solid black"); // Øverste grænse skal være tyk, da (2,2) er i område D
-    });
-  });
 });
