@@ -57,7 +57,7 @@ function App() {
     <div>
       {!user && (
         <FacebookLogin
-          appId="YOUR_APP_ID"
+          appId="DIT_FACEBOOK_APP_ID"
           autoLoad={true}
           fields="name,location"
           callback={responseFacebook}
