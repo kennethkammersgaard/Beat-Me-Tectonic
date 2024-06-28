@@ -8,7 +8,7 @@ import {
   END_BOARD,
   AREAS,
 } from "./Constants";
-import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic";
+import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
 
 function GameBoard({ timer, setGameState, resetGame }) {
@@ -64,7 +64,6 @@ function GameBoard({ timer, setGameState, resetGame }) {
         invalidCells.filter((cell) => cell.row !== row || cell.col !== col),
       );
       if (isBoardComplete(newBoard)) {
-        setGameOver(true);
         setGameOver(true);
         setGameState("finished");
       }
