@@ -12,6 +12,7 @@ function TermsOfService() {
         <li>Vi forbeholder os retten til at ændre eller afslutte spillet når som helst.</li>
         <li>Vi er ikke ansvarlige for eventuelle tab eller skader, der opstår som følge af din brug af spillet.</li>
         <li>Du er ansvarlig for at holde din konto sikker.</li>
+        <li>Du har ret til at anmode om sletning af dine brugerdata. For at gøre dette, skal du sende en anmodning til vores support-team.</li>
       </ol>
       <Link to="/">Tilbage til spillet</Link>
     </div>
