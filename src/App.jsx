@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GameBoard from "./GameBoard";
 import HelpPage from "./HelpPage";
@@ -90,17 +90,11 @@ function App() {
           )}
           <div className="centered-container">
             <div className="App">
-              <Switch>
-                <Route exact path="/">
-                  <GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />
-                </Route>
-                <Route path="/help">
-                  <HelpPage setGameState={setGameState} />
-                </Route>
-                <Route path="/terms">
-                  <TermsOfService setGameState={setGameState} />
-                </Route>
-              </Switch>
+              <Routes>
+                <Route path="/" element={<GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />} />
+                <Route path="/help" element={<HelpPage setGameState={setGameState} />} />
+                <Route path="/terms" element={<TermsOfService setGameState={setGameState} />} />
+              </Routes>
             </div>
           </div>
           <div className="footer" style={{ textAlign: 'center' }}>
