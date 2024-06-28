@@ -1,6 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function HelpPage() {
+  const navigate = useNavigate();
+
+  const handleBackToGame = () => {
+    navigate('/');
+  };
   return (
     <div className="HelpPage">
       <h1>Welcome to Beat-Me-Tectonic!</h1>
@@ -38,7 +44,7 @@ function HelpPage() {
         <li>Try to complete the board in the shortest time possible!</li>
       </ol>
       <br />
-      <button onClick={() => setGameState("start")}>Back to Start</button>
+      <button onClick={handleBackToGame}>Back to Game</button>
     </div>
   );
 }
