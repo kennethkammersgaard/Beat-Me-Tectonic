@@ -97,7 +97,10 @@ function App() {
             )}
           </div>
         </div>
-        <button onClick={showTerms}>Terms of Service</button>
+        <div className="footer">
+          <button onClick={showTerms}>Terms of Service</button>
+          <a href="#" onClick={(e) => { e.preventDefault(); showTerms(); }}>Vilkår for brug</a>
+        </div>
       </div>
     </div>
   );
