@@ -107,6 +107,10 @@ function GameBoard({ timer, setGameState }) {
   return (
     <div className="GameBoard">
       <h1>Beat Me Tectonic</h1>
+      <div className="button-container">
+        <button onClick={resetGame}>New Game</button>
+        <button onClick={() => setGameState("help")}>Help</button>
+      </div>
       <div className="Timer">Time: {formatTime(timer)}</div>
       <div className="board" style={{ maxWidth: "240px", margin: "20px auto" }}>
         {board.map((row, rowIndex) =>
@@ -155,14 +159,6 @@ function GameBoard({ timer, setGameState }) {
         onClick={handleNumberClick}
         isNumberAvailable={isNumberAvailable}
       />
-      <div style={{ marginTop: "20px" }}>
-        <button
-          onClick={resetGame}
-          style={{ fontSize: "16px", padding: "10px 20px", margin: "0 10px" }}
-        >
-          New Game
-        </button>
-      </div>
       {gameOver && (
         <div>
           <h2>Congratulations! You completed the game!</h2>
