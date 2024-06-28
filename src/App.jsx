@@ -34,14 +34,16 @@ function App() {
   );
 
   return (
-    <div className="App">
-      {gameState === "game" ? (
-        <GameBoard timer={timer} setGameState={setGameState} />
-      ) : gameState === "help" ? (
-        <HelpPage setGameState={setGameState} />
-      ) : (
-        <StartScreen />
-      )}
+    <div className="centered-container">
+      <div className="App">
+        {gameState === "game" ? (
+          <GameBoard timer={timer} setGameState={setGameState} />
+        ) : gameState === "help" ? (
+          <HelpPage setGameState={setGameState} />
+        ) : (
+          <StartScreen />
+        )}
+      </div>
     </div>
   );
 }
