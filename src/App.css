@@ -25,7 +25,7 @@
 .progress-bar-marker {
   position: absolute;
   top: -2px;
-  bottom: -2px;
+  height: 24px;
   width: 2px;
   background-color: black;
   transition: left 1s linear;
