@@ -168,12 +168,6 @@ function GameBoard({ timer, setGameState }) {
         onClick={handleNumberClick}
         isNumberAvailable={isNumberAvailable}
       />
-      {gameOver && (
-        <div>
-          <h2>Congratulations! You completed the game!</h2>
-          <p>Your time: {formatTime(timer)}</p>
-        </div>
-      )}
     </div>
   );
 }
