@@ -135,6 +135,7 @@ function GameBoard({ timer, setGameState, resetGame }) {
             return (
               <div
                 key={`${rowIndex}-${colIndex}`}
+                data-testid={`cell-${rowIndex}-${colIndex}`}
                 className={`cell ${style.borderTop ? "border-top" : ""} ${
                   style.borderRight ? "border-right" : ""
                 } ${style.borderBottom ? "border-bottom" : ""} ${
