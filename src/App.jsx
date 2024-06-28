@@ -61,7 +61,9 @@ function App() {
           autoLoad={true}
           fields="name,location"
           callback={responseFacebook}
-          icon="fa-facebook"
+          render={renderProps => (
+            <button onClick={renderProps.onClick}>Login with Facebook</button>
+          )}
         />
       )}
       {user && (
