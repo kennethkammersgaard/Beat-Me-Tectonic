@@ -1,0 +1,38 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0; /* Fjern gap mellem cellerne */
+  border-collapse: collapse; /* Sikrer ingen overlapning mellem celler */
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc; /* Standard kant */
+  box-sizing: border-box; /* Inkluder kantstørrelse i cellens størrelse */
+}
+
+.cell.border-top {
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-top-color: black;
+}
+
+.cell.border-right {
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-right-color: black;
+}
+
+.cell.border-bottom {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+}
+
+.cell.border-left {
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-left-color: black;
+}
