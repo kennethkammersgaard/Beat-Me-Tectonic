@@ -108,14 +108,7 @@ function GameBoard({ timer, setGameState }) {
     <div className="GameBoard">
       <h1>Beat Me Tectonic</h1>
       <div className="Timer">Time: {formatTime(timer)}</div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: `repeat(${BOARD_WIDTH}, 1fr)`,
-          maxWidth: "240px",
-          margin: "20px auto",
-        }}
-      >
+      <div className="board" style={{ maxWidth: "240px", margin: "20px auto" }}>
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => {
             const style = getCellBorderStyle(rowIndex, colIndex);
