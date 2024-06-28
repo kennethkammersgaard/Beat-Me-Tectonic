@@ -46,6 +46,8 @@ function GameBoard({ timer, setGameState }) {
       );
       if (isBoardComplete(newBoard)) {
         setGameOver(true);
+        setGameOver(true);
+        setGameState("finished");
       }
     } else {
       setBoard(newBoard);
@@ -96,6 +98,7 @@ function GameBoard({ timer, setGameState }) {
     setSelectedNumber(null);
     setInvalidCells([]);
     setGameState("start");
+    setTimer(0);
   };
 
   const formatTime = (time) => {
