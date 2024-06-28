@@ -97,8 +97,7 @@ function App() {
             )}
           </div>
         </div>
-        <div className="footer">
-          <button onClick={showTerms}>Terms of Service</button>
+        <div className="footer" style={{ textAlign: 'center' }}>
           <a href="#" onClick={(e) => { e.preventDefault(); showTerms(); }}>Vilkår for brug</a>
         </div>
       </div>
