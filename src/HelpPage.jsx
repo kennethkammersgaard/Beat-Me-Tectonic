@@ -2,8 +2,8 @@ import React from "react";
 
 function HelpPage() {
   const handleBackToGame = () => {
-    // For now, we'll just use window.history to go back
-    window.history.back();
+    // Navigate directly to the home page
+    window.location.href = '/';
   };
   return (
     <div className="HelpPage">
