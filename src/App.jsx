@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GameBoard from "./GameBoard";
 import HelpPage from "./HelpPage";
 
