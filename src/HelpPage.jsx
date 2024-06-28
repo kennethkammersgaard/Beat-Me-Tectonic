@@ -1,11 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 function HelpPage() {
-  const navigate = useNavigate();
-
   const handleBackToGame = () => {
-    navigate('/');
+    // For now, we'll just use window.history to go back
+    window.history.back();
   };
   return (
     <div className="HelpPage">
