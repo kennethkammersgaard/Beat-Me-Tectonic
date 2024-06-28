@@ -120,11 +120,11 @@ function GameBoard({ timer, setGameState, resetGame }) {
   return (
     <div className="GameBoard">
       <h1>Beat Me Tectonic</h1>
-      <div className="button-container">
-        <button onClick={() => setGameState("game")}>New Game</button>
-        <button onClick={() => setGameState("help")}>Help</button>
+      <div className="button-container" data-testid="button-container">
+        <button onClick={() => setGameState("game")} data-testid="new-game-button">New Game</button>
+        <button onClick={() => setGameState("help")} data-testid="help-button">Help</button>
       </div>
-      <div className="board" style={{ maxWidth: "240px", margin: "20px auto" }}>
+      <div className="board" style={{ maxWidth: "240px", margin: "20px auto" }} data-testid="board">
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => {
             const style = getCellBorderStyle(rowIndex, colIndex);
@@ -172,11 +172,11 @@ function GameBoard({ timer, setGameState, resetGame }) {
         onClick={handleNumberClick}
         isNumberAvailable={isNumberAvailable}
       />
-      <div className="progress-bar" style={{ position: 'relative' }}>
+      <div className="progress-bar" style={{ position: 'relative' }} data-testid="progress-bar">
         <div className="progress-bar-inner" style={{ width: `${Math.min((timer / 240) * 100, 100)}%` }}></div>
         <div className="progress-bar-marker" style={{ left: `${Math.min((timer / 240) * 100, 100)}%` }}></div>
       </div>
-      <div className="Timer">Time: {formatTime(timer)}</div>
+      <div className="Timer" data-testid="timer">Time: {formatTime(timer)}</div>
     </div>
   );
 }
