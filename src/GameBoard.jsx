@@ -34,6 +34,16 @@ function GameBoard({ timer, setGameState, resetGame }) {
     }
   }, [resetGame]);
 
+  useEffect(() => {
+    if (resetGame) {
+      setBoard(INITIAL_BOARD);
+      setGameOver(false);
+      setSelectedCell(null);
+      setSelectedNumber(null);
+      setInvalidCells([]);
+    }
+  }, [resetGame]);
+
   const handleCellClick = (row, col) => {
     if (gameOver) return;
     if (
@@ -118,7 +128,7 @@ function GameBoard({ timer, setGameState, resetGame }) {
     <div className="GameBoard">
       <h1>Beat Me Tectonic</h1>
       <div className="button-container">
-        <button onClick={resetGame}>New Game</button>
+        <button onClick={() => setGameState("game")}>New Game</button>
         <button onClick={() => setGameState("help")}>Help</button>
       </div>
       <div className="Timer">Time: {formatTime(timer)}</div>
