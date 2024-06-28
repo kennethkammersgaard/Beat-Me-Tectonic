@@ -57,23 +57,23 @@ function GameBoard({ timer, setGameState, resetGame }) {
     newBoard[row][col] = number;
 
     if (isValidMove(newBoard, row, col) && number === END_BOARD[row][col]) {
-      setBoard(newBoard);
-      setSelectedCell(null);
-      setSelectedNumber(null);
-      setInvalidCells(
-        invalidCells.filter((cell) => cell.row !== row || cell.col !== col),
-      );
-      if (isBoardComplete(newBoard)) {
-        setGameOver(true);
-        setGameState("finished");
-      }
+        setBoard(newBoard);
+        setSelectedCell(null);
+        setSelectedNumber(null);
+        setInvalidCells(
+            invalidCells.filter((cell) => cell.row !== row || cell.col !== col),
+        );
+        if (isBoardComplete(newBoard)) {
+            setGameOver(true);
+            setGameState("finished");
+        }
     } else {
-      setBoard(newBoard);
-      setInvalidCells([
-        ...invalidCells.filter((cell) => cell.row !== row || cell.col !== col),
-        { row, col },
-      ]);
-      // 10 second penalty
+        setBoard(newBoard);
+        setInvalidCells([
+            ...invalidCells.filter((cell) => cell.row !== row || cell.col !== col),
+            { row, col },
+        ]);
+        // 10 second penalty
     }
   };
 
