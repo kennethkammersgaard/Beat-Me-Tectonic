@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import GameBoard from "./GameBoard";
 import HelpPage from "./HelpPage";
+import TermsOfService from "./TermsOfService";
 
 function App() {
   const [gameState, setGameState] = useState("game");
@@ -25,6 +26,10 @@ function App() {
 
   const showHelp = () => {
     setGameState("help");
+  };
+
+  const showTerms = () => {
+    setGameState("terms");
   };
 
   const closePopup = () => {
@@ -85,11 +90,14 @@ function App() {
           <div className="App">
             {gameState === "game" || gameState === "finished" ? (
               <GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />
-            ) : (
+            ) : gameState === "help" ? (
               <HelpPage setGameState={setGameState} />
+            ) : (
+              <TermsOfService setGameState={setGameState} />
             )}
           </div>
         </div>
+        <button onClick={showTerms}>Terms of Service</button>
       </div>
     </div>
   );
