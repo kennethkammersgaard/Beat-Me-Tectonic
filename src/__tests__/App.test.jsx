@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../App';
 import { INITIAL_BOARD } from '../Constants';
 
-jest.mock('./App.css', () => ({}));
+jest.mock('../App.css', () => ({}));
 
 test('displays end time in popup when game is finished', () => {
   render(<App />);
