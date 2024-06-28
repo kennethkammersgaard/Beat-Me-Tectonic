@@ -36,20 +36,20 @@ describe("Game Logic Tests", () => {
 
     it("should return false for a move with value greater than area size", () => {
       const board = emptyBoard.map((row) => [...row]);
-      board[0][0] = 5; // Antager, at områdets størrelse er mindre end 5
+      board[0][0] = 5; // Assuming the area size is less than 5
       expect(isValidMove(board, 0, 0)).toBe(false);
     });
 
     it("should return false for a move with non-unique value in area", () => {
       const board = emptyBoard.map((row) => [...row]);
       board[0][0] = 1;
-      board[1][0] = 1; // Indsætter samme værdi i et andet felt i samme område
+      board[1][0] = 1; // Insert the same value in another cell in the same area
       expect(isValidMove(board, 0, 0)).toBe(false);
     });
 
     it("should return false for a move with value in adjacent cell", () => {
       const board = emptyBoard.map((row) => [...row]);
-      board[0][1] = 1; // Indsætter samme værdi i en tilstødende celle
+      board[0][1] = 1; // Insert the same value in an adjacent cell
       expect(isValidMove(board, 0, 0)).toBe(false);
     });
   });

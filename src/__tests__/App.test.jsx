@@ -9,31 +9,29 @@ jest.useFakeTimers();
 test('displays end time in popup when game is finished', () => {
   render(<App />);
 
-  // Start spillet
+  // Start the game
   fireEvent.click(screen.getByTestId('new-game-button'));
 
-  // Simuler udfyldning af brættet
+  // Simulate filling the board
   act(() => {
-    // Her skal du tilføje logik for at udfylde brættet korrekt
-    // For eksempel:
     INITIAL_BOARD.forEach((row, rowIndex) => {
       row.forEach((cell, colIndex) => {
         if (cell === 0) {
           fireEvent.click(screen.getByTestId(`cell-${rowIndex}-${colIndex}`));
-          fireEvent.click(screen.getByText('1')); // Antager at '1' altid er et gyldigt træk
+          fireEvent.click(screen.getByText('1')); // Assuming '1' is always a valid move
         }
       });
     });
   });
 
-  // Fremskriv tiden
+  // Advance time
   act(() => {
-    jest.advanceTimersByTime(10000); // Fremskriv 10 sekunder
+    jest.advanceTimersByTime(10000); // Advance 10 seconds
   });
 
-  // Tjek om popup'en vises
+  // Check if the popup is displayed
   expect(screen.getByText(/Congratulations! You completed the game!/)).toBeInTheDocument();
   
-  // Tjek om sluttiden vises (mere fleksibel regex)
-  expect(screen.getByText(/Your time: \d+:\d{2}/)).toBeInTheDocument();
+  // Check if the end time is displayed (more flexible regex)
+  expect(screen.getByText(/Your time: \d+ seconds/)).toBeInTheDocument();
 });

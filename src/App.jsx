@@ -51,7 +51,7 @@ function App() {
           <div className="overlay-inner">
             <h2>Congratulations! You completed the game!</h2>
             <p>Your time: {timer} seconds</p>
-            <button onClick={closePopup}>Close</button>
+            <button onClick={closePopup} data-testid="close-popup-button">Close</button>
           </div>
         </div>
       )}
