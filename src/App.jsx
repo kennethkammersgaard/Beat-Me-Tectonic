@@ -69,27 +69,30 @@ function App() {
           <h2>Welcome, {user.name} from {user.city}</h2>
         </div>
       )}
-    <div>
-      {gameState === "finished" && (
-        <div className="overlay">
-          <div className="overlay-inner">
-            <h2>Congratulations! You completed the game!</h2>
-            <p>Your time: {timer} seconds</p>
-            <button onClick={closePopup} data-testid="close-popup-button">Close</button>
+      <div>
+        {gameState === "finished" && (
+          <div className="overlay">
+            <div className="overlay-inner">
+              <h2>Congratulations! You completed the game!</h2>
+              <p>Your time: {timer} seconds</p>
+              <button onClick={closePopup} data-testid="close-popup-button">Close</button>
+            </div>
+          </div>
+        )}
+        <div className="centered-container">
+          <div className="App">
+            {gameState === "game" || gameState === "finished" ? (
+              <GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />
+            ) : (
+              <HelpPage setGameState={setGameState} />
+            )}
           </div>
         </div>
-      )}
-    <div className="centered-container">
-      <div className="App">
-        {gameState === "game" || gameState === "finished" ? (
-          <GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />
-        ) : (
-          <HelpPage setGameState={setGameState} />
-        )}
       </div>
     </div>
-  </div>
   );
 }
+
+export default App;
 
 export default App;
