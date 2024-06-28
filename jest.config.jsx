@@ -10,7 +10,7 @@ module.exports = {
   ],
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.js"],
   moduleNameMapper: {
-    "\\.(css|less|scss)$": "identity-obj-proxy",
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js",
   },
   testMatch: [
