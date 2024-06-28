@@ -29,6 +29,10 @@ function App() {
     setGameState("game");
   };
 
+  const finishGame = () => {
+    setGameState("finished");
+  };
+
   return (
     <div>
       {gameState === "finished" && (
@@ -42,7 +46,7 @@ function App() {
       )}
     <div className="centered-container">
       <div className="App">
-        {gameState === "game" ? (
+        {gameState === "game" || gameState === "finished" ? (
           <GameBoard timer={timer} setGameState={setGameState} />
         ) : (
           <HelpPage setGameState={setGameState} />
