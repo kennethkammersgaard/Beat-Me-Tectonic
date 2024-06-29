@@ -24,6 +24,16 @@ function GameBoard({ timer, setGameState, resetGame }) {
     }
   }, [board, setGameState]);
 
+  useEffect(() => {
+    if (resetGame) {
+      setBoard(INITIAL_BOARD);
+      setGameOver(false);
+      setSelectedCell(null);
+      setSelectedNumber(null);
+      setInvalidCells([]);
+    }
+  }, [resetGame]);
+
 
 
 
