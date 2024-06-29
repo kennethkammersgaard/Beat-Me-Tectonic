@@ -92,7 +92,7 @@ function App() {
             </Routes>
           </div>
         </div>
-        <Footer />
+        <Footer user={user} />
       </div>
     </Router>
   );
