@@ -6,6 +6,7 @@ import HelpPage from "./HelpPage";
 import Header from "./Header";
 import Footer from "./Footer";
 import TermsOfService from "./TermsOfService";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 function App() {
   const [gameState, setGameState] = useState("game");
