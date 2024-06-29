@@ -67,17 +67,6 @@ function App() {
   return (
     <Router>
       <div>
-        {!user && (
-          <FacebookLogin
-            appId="993897072203300"
-            autoLoad={true}
-            fields="name,location"
-            callback={responseFacebook}
-            render={renderProps => (
-              <button onClick={renderProps.onClick}>Login with Facebook</button>
-            )}
-          />
-        )}
         {user && (
           <div>
             <h2>Welcome, {user.name} from {user.city}</h2>
