@@ -193,7 +193,7 @@ body {
 
 .board {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
   gap: 0; /* Fjern gap mellem cellerne */
   border-collapse: collapse; /* Sikrer ingen overlapning mellem celler */
   border: 2px solid black; /* Tilføj en 2px sort kant rundt om hele boardet */

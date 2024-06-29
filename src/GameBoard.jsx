@@ -142,7 +142,7 @@ function GameBoard({ timer, setGameState, resetGame }) {
         }} data-testid="new-game-button">New Game</button>
         <button onClick={() => window.location.href = '/help'} data-testid="help-button">Help</button>
       </div>
-      <div className="board" style={{ maxWidth: "240px", margin: "20px auto" }} data-testid="board">
+      <div className="board" style={{ maxWidth: `${BOARD_WIDTH * 60}px`, margin: "20px auto" }} data-testid="board">
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => {
             const style = getCellBorderStyle(rowIndex, colIndex);
