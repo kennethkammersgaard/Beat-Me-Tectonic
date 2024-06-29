@@ -25,6 +25,7 @@ function App() {
     setGameState("game");
     setTimer(0);
     setResetGame(true);
+    setTimer(0);
   };
 
   const showHelp = () => {

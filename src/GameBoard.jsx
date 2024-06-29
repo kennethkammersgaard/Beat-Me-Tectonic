@@ -132,7 +132,14 @@ function GameBoard({ timer, setGameState, resetGame }) {
     <div className="GameBoard">
       <h1>Beat Me Tectonic</h1>
       <div className="button-container" data-testid="button-container">
-        <button onClick={() => setGameState("game")} data-testid="new-game-button">New Game</button>
+        <button onClick={() => {
+          setGameState("game");
+          setBoard(INITIAL_BOARD);
+          setGameOver(false);
+          setSelectedCell(null);
+          setSelectedNumber(null);
+          setInvalidCells([]);
+        }} data-testid="new-game-button">New Game</button>
         <button onClick={() => setGameState("help")} data-testid="help-button">Help</button>
       </div>
       <div className="board" style={{ maxWidth: "240px", margin: "20px auto" }} data-testid="board">
