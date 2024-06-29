@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FacebookLoginComponent from './FacebookLoginComponent';
 
 function Footer({ user, setUser }) {
   return (
@@ -8,15 +9,7 @@ function Footer({ user, setUser }) {
       <Link to="/privacy">Privatlivspolitik</Link>
       {!user && (
         <div style={{ position: 'absolute', bottom: '10px', right: '10px' }}>
-          <FacebookLogin
-            appId="993897072203300"
-            autoLoad={true}
-            fields="name,location"
-            callback={responseFacebook}
-            render={renderProps => (
-              <button onClick={renderProps.onClick}>Login with Facebook</button>
-            )}
-          />
+          <FacebookLoginComponent setUser={setUser} />
         </div>
       )}
     </footer>
