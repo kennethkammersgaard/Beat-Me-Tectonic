@@ -95,7 +95,7 @@ function App() {
             <div className="App">
               <Routes>
                 <Route path="/" element={<GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />} />
-                {gameState === "help" && <HelpPage />}
+                <Route path="/help" element={<HelpPage />} />
                 <Route path="/terms" element={<TermsOfService />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
               </Routes>

@@ -140,7 +140,7 @@ function GameBoard({ timer, setGameState, resetGame }) {
           setSelectedNumber(null);
           setInvalidCells([]);
         }} data-testid="new-game-button">New Game</button>
-        <button onClick={() => setGameState("help")} data-testid="help-button">Help</button>
+        <button onClick={() => window.location.href = '/help'} data-testid="help-button">Help</button>
       </div>
       <div className="board" style={{ maxWidth: "240px", margin: "20px auto" }} data-testid="board">
         {board.map((row, rowIndex) =>
