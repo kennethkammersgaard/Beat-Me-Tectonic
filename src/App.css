@@ -193,6 +193,7 @@
   border-collapse: collapse; /* Sikrer ingen overlapning mellem celler */
   border: 2px solid black; /* Tilføj en 2px sort kant rundt om hele boardet */
   margin: 0 auto; /* Centrerer boardet horisontalt */
+  font-family: 'Roboto', sans-serif; /* Skift skrifttypen til Roboto */
 }
 
 .number-buttons {
