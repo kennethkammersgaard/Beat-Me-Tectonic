@@ -139,6 +139,7 @@ function GameBoard({ timer, setGameState, resetGame }) {
           setSelectedCell(null);
           setSelectedNumber(null);
           setInvalidCells([]);
+          setTimer(0); // Reset timer
         }} data-testid="new-game-button">New Game</button>
         <button onClick={() => window.location.href = '/help'} data-testid="help-button">Help</button>
       </div>
