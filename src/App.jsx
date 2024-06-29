@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import FacebookLoginComponent from './FacebookLoginComponent';
 import GameBoard from "./GameBoard";
 import HelpPage from "./HelpPage";
 import Header from "./Header";
@@ -57,12 +57,6 @@ function App() {
     }
   }, [resetGame]);
 
-  const responseFacebook = (response) => {
-    setUser({
-      name: response.name,
-      city: response.location?.name || "Unknown",
-    });
-  };
 
   return (
     <Router>
@@ -92,7 +86,7 @@ function App() {
             </Routes>
           </div>
         </div>
-        <Footer user={user} />
+        <Footer user={user} setUser={setUser} />
       </div>
     </Router>
   );
