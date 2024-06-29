@@ -4,6 +4,7 @@ import FacebookLoginComponent from './FacebookLoginComponent';
 import GameBoard from "./GameBoard";
 import HelpPage from "./HelpPage";
 import Header from "./Header";
+import { UserProvider } from './UserContext';
 import Footer from "./Footer";
 import TermsOfService from "./TermsOfService";
 import PrivacyPolicy from "./PrivacyPolicy";
@@ -59,36 +60,38 @@ function App() {
 
 
   return (
-    <Router>
-      <div>
-        {user && (
-          <div>
-            <h2>Welcome, {user.name} from {user.city}</h2>
-          </div>
-        )}
-        <Header />
-        {gameState === "finished" && (
-          <div className="overlay">
-            <div className="overlay-inner">
-              <h2>Congratulations! You completed the game!</h2>
-              <p>Your time: {timer} seconds</p>
-              <button onClick={closePopup} data-testid="close-popup-button">Close</button>
+    <UserProvider>
+      <Router>
+        <div>
+          {user && (
+            <div>
+              <h2>Welcome, {user.name} from {user.city}</h2>
+            </div>
+          )}
+          <Header />
+          {gameState === "finished" && (
+            <div className="overlay">
+              <div className="overlay-inner">
+                <h2>Congratulations! You completed the game!</h2>
+                <p>Your time: {timer} seconds</p>
+                <button onClick={closePopup} data-testid="close-popup-button">Close</button>
+              </div>
+            </div>
+          )}
+          <div className="centered-container">
+            <div className="App">
+              <Routes>
+                <Route path="/" element={<GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />} />
+                <Route path="/help" element={<HelpPage />} />
+                <Route path="/terms" element={<TermsOfService />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+              </Routes>
             </div>
           </div>
-        )}
-        <div className="centered-container">
-          <div className="App">
-            <Routes>
-              <Route path="/" element={<GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />} />
-              <Route path="/help" element={<HelpPage />} />
-              <Route path="/terms" element={<TermsOfService />} />
-              <Route path="/privacy" element={<PrivacyPolicy />} />
-            </Routes>
-          </div>
+          <Footer />
         </div>
-        <Footer user={user} setUser={setUser} />
-      </div>
-    </Router>
+      </Router>
+    </UserProvider>
   );
 }
 
