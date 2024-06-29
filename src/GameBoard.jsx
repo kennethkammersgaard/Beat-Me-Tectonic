@@ -31,8 +31,9 @@ function GameBoard({ timer, setGameState, resetGame }) {
       setSelectedCell(null);
       setSelectedNumber(null);
       setInvalidCells([]);
+      setGameState("game");
     }
-  }, [resetGame]);
+  }, [resetGame, setGameState]);
 
 
 
