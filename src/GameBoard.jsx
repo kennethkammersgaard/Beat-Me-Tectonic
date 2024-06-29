@@ -130,7 +130,6 @@ function GameBoard({ timer, setGameState, resetGame }) {
 
   return (
     <div className="GameBoard">
-      <h1>Beat Me Tectonic</h1>
       <div className="button-container" data-testid="button-container">
         <button onClick={() => {
           setGameState("game");
