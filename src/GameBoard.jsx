@@ -66,7 +66,10 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
     };
   }, [selectedCell, board]);
 
-  const handleCellClick = (row, col) => {
+  useEffect(() => {
+    const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+    setBoard(selectedBoard.initial);
+  }, [difficulty]);
     if (gameOver) return;
     if (
       board[row][col] !== 0 &&
