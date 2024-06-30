@@ -8,12 +8,12 @@ import {
   AREAS,
 } from "./Boards";
 
-function updateBoard(newBoard) {
+window.updateBoard = function(newBoard) {
   const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
   setBoard(newBoard);
   setBoardHeight(selectedBoard.initial.length);
   setBoardWidth(selectedBoard.initial[0].length);
-}
+};
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
 
