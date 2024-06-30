@@ -16,7 +16,20 @@ test('New game starts with correct board setup', async ({ page }) => {
   await expect(cellBelow).toHaveText('3');
 });
 
-test('Button 5 and 3 are disabled when the first cell is selected', async ({ page }) => {
+test('User selects a medium board and sees the difficulty level', async ({ page }) => {
+  // Navigate to the home page
+  await page.goto('http://localhost:5173');
+
+  // Click the New game button
+  await page.click('button:has-text("New game")');
+
+  // Select the medium difficulty
+  await page.selectOption('select#difficulty', 'medium');
+
+  // Check if the difficulty level is displayed correctly
+  const difficultyText = await page.locator('.Timer').textContent();
+  await expect(difficultyText).toContain('Sværhedsgrad: Medium');
+});
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
