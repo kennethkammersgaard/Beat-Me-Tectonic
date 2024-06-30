@@ -59,9 +59,11 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "easy", setDif
   }, [selectedCell, board]);
 
   useEffect(() => {
-    if (resetGame || timer >= 120) {
+    if (resetGame) {
       const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
       setBoard(selectedBoard.initial);
+      setBoardHeight(selectedBoard.initial.length);
+      setBoardWidth(selectedBoard.initial[0].length);
       setGameOver(false);
       setSelectedCell(null);
       setSelectedNumber(null);
