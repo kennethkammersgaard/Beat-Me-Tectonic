@@ -62,6 +62,10 @@ function App() {
     <Router>
       <div>
         <Header />
+          <div className="button-container">
+            <button onClick={startGame}>New game</button>
+            <button onClick={showHelp}>Help</button>
+          </div>
           {gameState === "finished" && (
             <div className="overlay">
               <div className="overlay-inner">
