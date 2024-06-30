@@ -4,9 +4,7 @@ import NumberButtons from "./NumberButtons";
 import {
   BOARD_WIDTH,
   BOARD_HEIGHT,
-  INITIAL_BOARD,
-  END_BOARD,
-  AREAS,
+  BOARDS,
 } from "./Constants";
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
@@ -32,14 +30,15 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
 
   useEffect(() => {
     if (resetGame) {
-      setBoard(INITIAL_BOARD);
+      const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+      setBoard(selectedBoard.initial);
       setGameOver(false);
       setSelectedCell(null);
       setSelectedNumber(null);
       setInvalidCells([]);
       setGameState("game");
     }
-  }, [resetGame, setGameState]);
+  }, [resetGame, setGameState, difficulty]);
 
   useEffect(() => {
     if (resetGame || timer >= 120) {
@@ -85,7 +84,8 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
     const newBoard = board.map((r) => [...r]);
     newBoard[row][col] = number;
 
-    if (number === END_BOARD[row][col]) {
+    const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+    if (number === selectedBoard.end[row][col]) {
       setBoard(newBoard);
       setSelectedCell(null);
       setSelectedNumber(null);
