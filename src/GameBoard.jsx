@@ -17,9 +17,9 @@ window.updateBoard = function(newBoard, difficulty) {
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 
 function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState }) {
-  const [board, setBoard] = useState(BOARDS[difficulty.toLowerCase()][0].initial);
-  const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty.toLowerCase()][0].initial.length);
-  const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty.toLowerCase()][0].initial[0].length);
+  const [board, setBoard] = useState(BOARDS.test[0].initial);
+  const [boardHeight, setBoardHeight] = useState(BOARDS.test[0].initial.length);
+  const [boardWidth, setBoardWidth] = useState(BOARDS.test[0].initial[0].length);
   const [timer, setTimer] = useState(0);
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
@@ -68,7 +68,7 @@ function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDif
 
   useEffect(() => {
     if (resetGame || showDifficultyOverlay) {
-      const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+      const selectedBoard = BOARDS.test[0];
       setBoard(selectedBoard.initial);
       setBoardHeight(selectedBoard.initial.length);
       setBoardWidth(selectedBoard.initial[0].length);
@@ -182,7 +182,7 @@ function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDif
               <option value="Hard">Hard</option>
             </select>
             <button onClick={() => {
-              const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+              const selectedBoard = BOARDS.test[0];
               setBoard(selectedBoard.initial);
               setBoardHeight(selectedBoard.initial.length);
               setBoardWidth(selectedBoard.initial[0].length);
