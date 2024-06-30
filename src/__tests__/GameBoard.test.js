@@ -1,5 +1,4 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+
 import GameBoard from '../GameBoard';
 
 jest.mock('../Constants', () => ({
