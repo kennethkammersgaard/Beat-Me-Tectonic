@@ -22,6 +22,9 @@ test('Tjek om bruger kan vælge sværhedsgrad', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
+  // Select the difficulty level
+  await page.selectOption('select#difficulty', 'easy');
+
   // Click the New game button
   await page.click('button:has-text("New game")');
 
