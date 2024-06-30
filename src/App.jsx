@@ -25,7 +25,6 @@ function App() {
   const startGame = () => {
     setShowDifficultyOverlay(true);
     setResetGame(false);
-    setTimer(0);
     setResetGame(true);
   };
 
