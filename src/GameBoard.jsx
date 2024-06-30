@@ -9,7 +9,7 @@ import {
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
 
-function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay }) {
+function GameBoard({ timer, setGameState, resetGame, difficulty = "easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay }) {
   const [board, setBoard] = useState(BOARDS[difficulty.toLowerCase()][0].initial);
   const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty.toLowerCase()][0].initial.length);
   const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty.toLowerCase()][0].initial[0].length);
@@ -157,9 +157,9 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
             <h2>Select Difficulty Level</h2>
             <p>When you click start, you begin straight away, and remember you go for the fastest time!</p>
             <select onChange={(e) => setDifficulty(e.target.value)} data-testid="difficulty-select">
-              <option value="Easy">Easy</option>
-              <option value="Medium">Medium</option>
-              <option value="Hard">Hard</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
             </select>
             <button onClick={() => {
               const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
