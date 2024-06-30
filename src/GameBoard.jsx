@@ -151,7 +151,7 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "easy", setDif
 
   return (
     <div className="GameBoard">
-      {showDifficultyOverlay && (
+      {showDifficultyOverlay ? (
         <div className="overlay">
           <div className="overlay-inner">
             <h2>Select Difficulty Level</h2>
