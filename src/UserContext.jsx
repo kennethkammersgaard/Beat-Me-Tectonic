@@ -1,13 +1,1 @@
-import React, { createContext, useState } from 'react';
-
-export const UserContext = createContext();
-
-export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  );
-};
+// This file can be removed if it's not used elsewhere in the project

@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import FacebookLoginComponent from './FacebookLoginComponent';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GameBoard from "./GameBoard";
 import HelpPage from "./HelpPage";
 import Header from "./Header";
-import { UserProvider } from './UserContext';
 import Footer from "./Footer";
 import TermsOfService from "./TermsOfService";
 import PrivacyPolicy from "./PrivacyPolicy";
 
 function App() {
   const [gameState, setGameState] = useState("game");
-  const [user, setUser] = useState(null);
   const [timer, setTimer] = useState(0);
 
   useEffect(() => {
@@ -60,15 +57,9 @@ function App() {
 
 
   return (
-    <UserProvider>
-      <Router>
-        <div>
-          {user && (
-            <div>
-              <h2>Welcome, {user.name} from {user.city}</h2>
-            </div>
-          )}
-          <Header />
+    <Router>
+      <div>
+        <Header />
           {gameState === "finished" && (
             <div className="overlay">
               <div className="overlay-inner">
@@ -91,7 +82,6 @@ function App() {
           <Footer />
         </div>
       </Router>
-    </UserProvider>
   );
 }
 
