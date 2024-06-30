@@ -9,7 +9,7 @@ import {
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
 
-function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDifficulty }) {
+function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay }) {
   const [board, setBoard] = useState(INITIAL_BOARD);
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
@@ -153,23 +153,24 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
 
   return (
     <div className="GameBoard">
-      <div className="button-container" data-testid="button-container">
-        <button onClick={() => {
-          setGameState("game");
-          setBoard(INITIAL_BOARD);
-          setGameOver(false);
-          setSelectedCell(null);
-          setSelectedNumber(null);
-          setInvalidCells([]);
-          setTimer(0); // Reset timer
-        }} data-testid="new-game-button">New Game</button>
-        <select onChange={(e) => setDifficulty(e.target.value)} data-testid="difficulty-select">
-          <option value="Easy">Easy</option>
-          <option value="Medium">Medium</option>
-          <option value="Hard">Hard</option>
-        </select>
-        <button onClick={() => window.location.href = '/help'} data-testid="help-button">Help</button>
-      </div>
+      {showDifficultyOverlay && (
+        <div className="overlay">
+          <div className="overlay-inner">
+            <h2>Vælg sværhedsgrad</h2>
+            <p>When you click start, you begin straight away, and remember you go for the fastest time!</p>
+            <select onChange={(e) => setDifficulty(e.target.value)} data-testid="difficulty-select">
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+            <button onClick={() => {
+              setShowDifficultyOverlay(false);
+              setGameState("game");
+              setTimer(0);
+            }} data-testid="start-button">Start</button>
+          </div>
+        </div>
+      )}
       <div className="board" style={{ maxWidth: `${BOARD_WIDTH * 60}px`, margin: "20px auto" }} data-testid="board">
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => {

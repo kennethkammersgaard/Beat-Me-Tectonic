@@ -22,7 +22,7 @@ function App() {
   }, [gameState]);
 
   const startGame = () => {
-    setGameState("game");
+    setShowDifficultyOverlay(true);
     setTimer(0);
     setResetGame(true);
     setTimer(0);
@@ -37,7 +37,7 @@ function App() {
   };
 
   const closePopup = () => {
-    setGameState("game");
+    setShowDifficultyOverlay(false);
     setTimer(0);
     setResetGame(true);
     setGameState("game");
@@ -47,7 +47,7 @@ function App() {
     setGameState("finished");
   };
 
-  const [resetGame, setResetGame] = useState(false);
+  const [showDifficultyOverlay, setShowDifficultyOverlay] = useState(true);
   const [difficulty, setDifficulty] = useState("Easy");
 
   useEffect(() => {
@@ -73,7 +73,7 @@ function App() {
           <div className="centered-container">
             <div className="App">
               <Routes>
-                <Route path="/" element={<GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} difficulty={difficulty} setDifficulty={setDifficulty} />} />
+                <Route path="/" element={<GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} difficulty={difficulty} setDifficulty={setDifficulty} showDifficultyOverlay={showDifficultyOverlay} setShowDifficultyOverlay={setShowDifficultyOverlay} />} />
                 <Route path="/help" element={<HelpPage />} />
                 <Route path="/terms" element={<TermsOfService />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
