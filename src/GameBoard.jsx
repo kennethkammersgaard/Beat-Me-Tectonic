@@ -10,19 +10,13 @@ import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.js
 import "./App.css";
 
 function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay }) {
-  const [board, setBoard] = useState(INITIAL_BOARD);
+  const [board, setBoard] = useState(BOARDS[difficulty.toLowerCase()][0].initial);
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [invalidCells, setInvalidCells] = useState([]);
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
-    window.updateBoard = (newBoard) => {
-      setBoard(newBoard);
-    };
-    window.updateBoard = (newBoard) => {
-      setBoard(newBoard);
-    };
     if (isBoardComplete(board)) {
       setGameState("finished");
     }
@@ -67,8 +61,6 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
   }, [selectedCell, board]);
 
   useEffect(() => {
-    const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
-    setBoard(selectedBoard.initial);
   }, [difficulty]);
     const handleCellClick = (row, col) => {
       if (gameOver) return;
