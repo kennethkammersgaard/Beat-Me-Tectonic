@@ -10,7 +10,7 @@ import {
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
 
-function GameBoard({ timer, setGameState, resetGame, difficulty = "easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay }) {
+function GameBoard({ setGameState, resetGame, difficulty = "easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay }) {
   const [board, setBoard] = useState(BOARDS[difficulty.toLowerCase()][0].initial);
   const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty.toLowerCase()][0].initial.length);
   const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty.toLowerCase()][0].initial[0].length);
@@ -186,7 +186,7 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "easy", setDif
             }} data-testid="start-button">Start</button>
           </div>
         </div>
-      )}
+      ) : null}
       <div className="board" style={{ maxWidth: `${boardWidth * 60}px`, margin: "20px auto" }} data-testid="board">
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => {
