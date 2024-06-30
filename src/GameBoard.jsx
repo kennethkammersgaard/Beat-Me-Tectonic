@@ -10,10 +10,10 @@ import {
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
 
-function GameBoard({ setGameState, resetGame, difficulty = "Easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState }) {
-  const [board, setBoard] = useState(BOARDS[difficulty][0].initial);
-  const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty][0].initial.length);
-  const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty][0].initial[0].length);
+function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState }) {
+  const [board, setBoard] = useState(BOARDS[difficulty.toLowerCase()][0].initial);
+  const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty.toLowerCase()][0].initial.length);
+  const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty.toLowerCase()][0].initial[0].length);
   const [timer, setTimer] = useState(0);
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
@@ -61,8 +61,8 @@ function GameBoard({ setGameState, resetGame, difficulty = "Easy", setDifficulty
   }, [selectedCell, board]);
 
   useEffect(() => {
-    if (resetGame) {
-      const selectedBoard = BOARDS[difficulty][0];
+    if (resetGame || showDifficultyOverlay) {
+      const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
       setBoard(selectedBoard.initial);
       setBoardHeight(selectedBoard.initial.length);
       setBoardWidth(selectedBoard.initial[0].length);
@@ -176,7 +176,7 @@ function GameBoard({ setGameState, resetGame, difficulty = "Easy", setDifficulty
               <option value="Hard">Hard</option>
             </select>
             <button onClick={() => {
-              const selectedBoard = BOARDS[difficulty][0];
+              const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
               setBoard(selectedBoard.initial);
               setBoardHeight(selectedBoard.initial.length);
               setBoardWidth(selectedBoard.initial[0].length);
