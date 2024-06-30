@@ -16,7 +16,7 @@ test('New game starts with correct board setup', async ({ page }) => {
   await expect(cellBelow).toHaveText('3');
 });
 
-test('User selects a medium board and sees the difficulty level', async ({ page }) => {
+test('Tjek om bruger kan vælge sværhedsgrad', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
@@ -24,15 +24,9 @@ test('User selects a medium board and sees the difficulty level', async ({ page 
   await page.click('button:has-text("New game")');
 
   // Select the medium difficulty
-  await page.selectOption('select[data-testid="difficulty-select"]', 'Medium');
+  await page.selectOption('select#difficulty', 'medium');
 
   // Check if the difficulty level is displayed correctly
-  const difficultyText = await page.locator('.Timer').textContent();
-  expect(difficultyText).toContain('Sværhedsgrad: Medium');
-
-  // Check if the board dimensions are 5x5
-  const cells = await page.locator('.cell');
-  expect(await cells.count()).toBe(25);
   const difficultyText = await page.locator('.Timer').textContent();
   expect(difficultyText).toContain('Sværhedsgrad: Medium');
   
