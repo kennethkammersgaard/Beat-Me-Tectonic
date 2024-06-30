@@ -1,33 +1,21 @@
 import React, { useState, useEffect } from "react";
-import Cell from "./Cell";
 import NumberButtons from "./NumberButtons";
 import {
-  BOARD_WIDTH,
-  BOARD_HEIGHT,
   BOARDS,
-  AREAS,
 } from "./Boards";
 
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 
-export default function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState }) {
-  const [board, setBoard] = useState(BOARDS.test[0].initial);
-  const [boardHeight, setBoardHeight] = useState(BOARDS.test[0].initial.length);
-  const [boardWidth, setBoardWidth] = useState(BOARDS.test[0].initial[0].length);
-  const [timer, setTimer] = useState(0);
+export default function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState, timer, setTimer }) {
+  const [board, setBoard] = useState(BOARDS[difficulty.toLowerCase()][0].initial);
+  const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty.toLowerCase()][0].initial.length);
+  const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty.toLowerCase()][0].initial[0].length);
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [invalidCells, setInvalidCells] = useState([]);
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
-    window.updateBoard = function(newBoard, difficulty) {
-      const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
-      setBoard(newBoard);
-      setBoardHeight(newBoard.length);
-      setBoardWidth(newBoard[0].length);
-    };
-  }, []);
     if (isBoardComplete(board)) {
       setGameState("finished");
     }
@@ -50,7 +38,7 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
       setSelectedNumber(null);
       setInvalidCells([]);
     }
-  }, [resetGame]);
+  }, [resetGame, timer]);
 
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -69,7 +57,7 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
 
   useEffect(() => {
     if (resetGame || showDifficultyOverlay) {
-      const selectedBoard = BOARDS.test[0];
+      const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
       setBoard(selectedBoard.initial);
       setBoardHeight(selectedBoard.initial.length);
       setBoardWidth(selectedBoard.initial[0].length);
@@ -78,16 +66,7 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
       setSelectedNumber(null);
       setInvalidCells([]);
     }
-  }, [resetGame, difficulty, timer]);
-  useEffect(() => {
-    let interval = null;
-    if (gameState === "game") {
-      interval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer + 1);
-      }, 1000);
-    }
-    return () => clearInterval(interval);
-  }, [gameState]);
+  }, [resetGame, difficulty, showDifficultyOverlay]);
 
     const handleCellClick = (row, col) => {
       if (gameOver) return;
@@ -108,8 +87,7 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
     const newBoard = board.map((r) => [...r]);
     newBoard[row][col] = number;
 
-    const selectedBoard = BOARDS[difficulty][0];
-    if (isValidMove(newBoard, row, col, boardWidth, boardHeight)) {
+    if (isValidMove(newBoard, row, col)) {
       setBoard(newBoard);
       setSelectedCell(null);
       setSelectedNumber(null);
@@ -134,12 +112,9 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
     if (!selectedCell) return false;
     const { row, col } = selectedCell;
     const area = BOARDS[difficulty.toLowerCase()][0].areas[row][col];
-    const areaSize = board
+    const areaSize = BOARDS[difficulty.toLowerCase()][0].areas
       .flat()
-      .filter(
-        (_, index) =>
-          AREAS[Math.floor(index / BOARD_WIDTH)][index % BOARD_WIDTH] === area,
-      ).length;
+      .filter((a) => a === area).length;
     if (number > areaSize) return false;
 
     // Find tal der allerede er i grønne felter i området
@@ -147,7 +122,7 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
       .flatMap((r, rowIndex) =>
         r.map((cell, colIndex) => ({
           value: cell,
-          area: AREAS[rowIndex][colIndex],
+          area: BOARDS[difficulty.toLowerCase()][0].areas[rowIndex][colIndex],
           isInvalid: invalidCells.some(
             (c) => c.row === rowIndex && c.col === colIndex,
           ),
@@ -183,20 +158,17 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
               <option value="Hard">Hard</option>
             </select>
             <button onClick={() => {
-              const selectedBoard = BOARDS.test[0];
+              const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
               setBoard(selectedBoard.initial);
               setBoardHeight(selectedBoard.initial.length);
               setBoardWidth(selectedBoard.initial[0].length);
               setShowDifficultyOverlay(false);
               setGameState("game");
               setTimer(0);
-              setTimer(0);
               setGameOver(false);
               setSelectedCell(null);
               setSelectedNumber(null);
               setInvalidCells([]);
-              setShowDifficultyOverlay(false);
-              setGameState("game");
             }} data-testid="start-button">Start</button>
           </div>
         </div>
