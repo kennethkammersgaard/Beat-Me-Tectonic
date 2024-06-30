@@ -183,6 +183,13 @@ function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDif
               setShowDifficultyOverlay(false);
               setGameState("game");
               setTimer(0);
+              setTimer(0);
+              setGameOver(false);
+              setSelectedCell(null);
+              setSelectedNumber(null);
+              setInvalidCells([]);
+              setShowDifficultyOverlay(false);
+              setGameState("game");
             }} data-testid="start-button">Start</button>
           </div>
         </div>
