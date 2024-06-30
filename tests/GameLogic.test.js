@@ -1,3 +1,4 @@
+import { test, expect } from '@playwright/test';
 import {
   isValidMove,
   isBoardComplete,
@@ -11,7 +12,7 @@ import {
   END_BOARD,
 } from "../src/Constants";
 
-describe("Game Logic Tests", () => {
+test.describe("Game Logic Tests", () => {
   const emptyBoard = Array.from({ length: BOARD_HEIGHT }, () =>
     Array(BOARD_WIDTH).fill(0),
   );
@@ -27,39 +28,39 @@ describe("Game Logic Tests", () => {
     expect(INITIAL_BOARD).toEqual(initialBoard);
   });
 
-  describe("isValidMove", () => {
-    it("should return true for a valid move", () => {
+  test.describe("isValidMove", () => {
+    test("should return true for a valid move", () => {
       const board = emptyBoard.map((row) => [...row]);
       board[0][0] = 1;
       expect(isValidMove(board, 0, 0)).toBe(true);
     });
 
-    it("should return false for a move with value greater than area size", () => {
+    test("should return false for a move with value greater than area size", () => {
       const board = emptyBoard.map((row) => [...row]);
       board[0][0] = 5; // Assuming the area size is less than 5
       expect(isValidMove(board, 0, 0)).toBe(false);
     });
 
-    it("should return false for a move with non-unique value in area", () => {
+    test("should return false for a move with non-unique value in area", () => {
       const board = emptyBoard.map((row) => [...row]);
       board[0][0] = 1;
       board[1][0] = 1; // Insert the same value in another cell in the same area
       expect(isValidMove(board, 0, 0)).toBe(false);
     });
 
-    it("should return false for a move with value in adjacent cell", () => {
+    test("should return false for a move with value in adjacent cell", () => {
       const board = emptyBoard.map((row) => [...row]);
       board[0][1] = 1; // Insert the same value in an adjacent cell
       expect(isValidMove(board, 0, 0)).toBe(false);
     });
   });
 
-  describe("isBoardComplete", () => {
-    it("should return true for a complete board", () => {
+  test.describe("isBoardComplete", () => {
+    test("should return true for a complete board", () => {
       expect(isBoardComplete(END_BOARD)).toBe(true);
     });
 
-    it("should return false for an incomplete board", () => {
+    test("should return false for an incomplete board", () => {
       const board = emptyBoard.map((row, rowIndex) =>
         row.map((cell, colIndex) => (rowIndex === 0 && colIndex === 0 ? 0 : 1)),
       );
