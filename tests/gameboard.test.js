@@ -29,7 +29,7 @@ test('User selects a medium board and sees the difficulty level', async ({ page 
   // Check if the difficulty level is displayed correctly
   const difficultyText = await page.locator('.Timer').textContent();
   await expect(difficultyText).toContain('Sværhedsgrad: Medium');
-});
+
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
@@ -49,20 +49,7 @@ test('User selects a medium board and sees the difficulty level', async ({ page 
   await expect(button3).toBeDisabled();
 });
 
-test('User selects a medium board and sees the difficulty level', async ({ page }) => {
-  // Navigate to the home page
-  await page.goto('http://localhost:5173');
 
-  // Click the New game button
-  await page.click('button:has-text("New game")');
-
-  // Select the medium difficulty
-  await page.selectOption('select#difficulty', 'medium');
-
-  // Check if the difficulty level is displayed correctly
-  const difficultyText = await page.locator('.Timer').textContent();
-  await expect(difficultyText).toContain('Sværhedsgrad: Medium');
-});
 
 test('Overlay with Congratulations is shown when the game is completed', async ({ page }) => {
   // Navigate to the home page
