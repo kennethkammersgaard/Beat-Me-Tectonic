@@ -128,3 +128,7 @@ export const BOARDS = {
     },
     ],
 };
+const BOARD_HEIGHT = BOARDS.easy[0].initial.length;
+const BOARD_WIDTH = BOARDS.easy[0].initial[0].length;
+
+export { BOARD_HEIGHT, BOARD_WIDTH };
