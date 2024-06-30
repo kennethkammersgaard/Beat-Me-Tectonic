@@ -22,6 +22,31 @@ export const END_BOARD = [
   [3, 1, 2, 4],
 ];
 
+export const INITIAL_BOARD_ALMOST_FINISHED = [
+  [0, 2, 3, 4],
+  [3, 4, 1, 5],
+  [1, 2, 3, 2],
+  [5, 4, 5, 1],
+  [3, 1, 2, 4],
+];
+
+
+export const INITIAL_BOAR_2 = [
+  [0, 1, 0, 0, 2],
+  [0, 0, 0, 0, 0],
+  [0, 5, 0, 0, 0],
+  [0, 0, 0, 0, 1],
+  [0, 0, 2, 0, 0],
+];
+
+export const AREAS_2 = [
+  ["A", "A", "A", "A", "B"],
+  ["A", "C", "C", "B", "B"],
+  ["C", "C", "D", "B", "B"],
+  ["C", "D", "D", "D", "F"],
+  ["E", "E", "D", "F", "F"],
+];
+
 export const BOARD_HEIGHT = INITIAL_BOARD.length;
 export const BOARD_WIDTH = INITIAL_BOARD[0].length;
 
