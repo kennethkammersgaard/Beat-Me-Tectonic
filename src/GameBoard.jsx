@@ -70,16 +70,17 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
     const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
     setBoard(selectedBoard.initial);
   }, [difficulty]);
-    if (gameOver) return;
-    if (
-      board[row][col] !== 0 &&
-      !invalidCells.some((cell) => cell.row === row && cell.col === col)
-    ) {
-      // Grønne felter kan ikke vælges igen
-      return;
-    }
-    setSelectedCell({ row, col });
-  };
+    const handleCellClick = (row, col) => {
+      if (gameOver) return;
+      if (
+        board[row][col] !== 0 &&
+        !invalidCells.some((cell) => cell.row === row && cell.col === col)
+      ) {
+        // Grønne felter kan ikke vælges igen
+        return;
+      }
+      setSelectedCell({ row, col });
+    };
 
   const handleNumberClick = (number) => {
     if (!selectedCell || gameOver) return;
