@@ -1,4 +1,4 @@
-import { BOARD_WIDTH, BOARD_HEIGHT, AREAS } from "./Constants";
+import { BOARD_WIDTH, BOARD_HEIGHT, AREAS } from "./Boards";
 
 export const isValidMove = (board, row, col) => {
     const value = board[row][col];
