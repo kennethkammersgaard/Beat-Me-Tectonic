@@ -19,6 +19,6 @@ test('Help page opens when Help button is clicked and closes when Back to game b
   // Check if the URL has changed back to the home page
   await expect(page).toHaveURL('http://localhost:5173/');
 
-  // Check if the game board is visible (you might need to adjust this selector based on your actual implementation)
-  await expect(page.locator('.game-board')).toBeVisible();
+  // Check if the "New game" button is visible, confirming we're back on the game page
+  await expect(page.locator('button:has-text("New game")')).toBeVisible();
 });
