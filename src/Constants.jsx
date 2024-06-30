@@ -1,32 +1,3 @@
-export const BOARD_WIDTH = 4;
-export const BOARD_HEIGHT = 5;
-/*
-export const INITIAL_BOARD = [
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 2, 0],
-  [3, 0, 0, 0, 0],
-  [0, 0, 1, 0, 0],
-  [0, 2, 0, 0, 0]
-];
-
-export const AREAS = [
-  ["A", "A", "B", "B", "C"],
-  ["A", "A", "B", "B", "C"],
-  ["D", "D", "E", "C", "C"],
-  ["D", "F", "E", "E", "G"],
-  ["F", "F", "G", "G", "G"]
-];
-
-export const END_BOARD = [
-  [2, 4, 3, 1, 4],
-  [1, 3, 4, 2, 3],
-  [3, 2, 1, 4, 2],
-  [1, 3, 1, 2, 4],
-  [2, 1, 3, 4, 1]
-];
-*/
-
-
 export const INITIAL_BOARD = [
   [0, 0, 0, 0],
   [3, 0, 0, 5],
@@ -50,5 +21,8 @@ export const END_BOARD = [
   [5, 4, 5, 1],
   [3, 1, 2, 4],
 ];
+
+export const BOARD_HEIGHT = INITIAL_BOARD.length;
+export const BOARD_WIDTH = INITIAL_BOARD[0].length;
 
 
