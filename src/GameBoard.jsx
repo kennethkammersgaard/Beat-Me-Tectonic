@@ -10,7 +10,7 @@ import {
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
 
-function GameBoard({ setGameState, resetGame, difficulty = "easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay }) {
+function GameBoard({ setGameState, resetGame, difficulty = "easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState }) {
   const [board, setBoard] = useState(BOARDS[difficulty.toLowerCase()][0].initial);
   const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty.toLowerCase()][0].initial.length);
   const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty.toLowerCase()][0].initial[0].length);
@@ -72,15 +72,15 @@ function GameBoard({ setGameState, resetGame, difficulty = "easy", setDifficulty
       setInvalidCells([]);
     }
   }, [resetGame, difficulty, timer]);
-    useEffect(() => {
-      let interval = null;
-      if (gameState === "game") {
-        interval = setInterval(() => {
-          setTimer((prevTimer) => prevTimer + 1);
-        }, 1000);
-      }
-      return () => clearInterval(interval);
-    }, [gameState]);
+  useEffect(() => {
+    let interval = null;
+    if (gameState === "game") {
+      interval = setInterval(() => {
+        setTimer((prevTimer) => prevTimer + 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [gameState]);
 
     const handleCellClick = (row, col) => {
       if (gameOver) return;
