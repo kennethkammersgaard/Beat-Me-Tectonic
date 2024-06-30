@@ -72,7 +72,7 @@ function App() {
           <div className="centered-container">
             <div className="App">
               <Routes>
-                <Route path="/" element={<GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} />} />
+                <Route path="/" element={<GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} difficulty={difficulty} />} />
                 <Route path="/help" element={<HelpPage />} />
                 <Route path="/terms" element={<TermsOfService />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />

@@ -24,7 +24,7 @@ test('User selects a medium board and sees the difficulty level', async ({ page 
   await page.click('button:has-text("New game")');
 
   // Select the medium difficulty
-  await page.selectOption('select#difficulty', 'medium');
+  await page.selectOption('select[data-testid="difficulty-select"]', 'Medium');
 
   // Check if the difficulty level is displayed correctly
   const difficultyText = await page.locator('.Timer').textContent();

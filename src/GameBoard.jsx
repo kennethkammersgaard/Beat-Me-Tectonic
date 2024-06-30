@@ -158,6 +158,11 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy" }) {
           setInvalidCells([]);
           setTimer(0); // Reset timer
         }} data-testid="new-game-button">New Game</button>
+        <select onChange={(e) => setDifficulty(e.target.value)} data-testid="difficulty-select">
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
         <button onClick={() => window.location.href = '/help'} data-testid="help-button">Help</button>
       </div>
       <div className="board" style={{ maxWidth: `${BOARD_WIDTH * 60}px`, margin: "20px auto" }} data-testid="board">
