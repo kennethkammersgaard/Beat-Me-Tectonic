@@ -11,7 +11,7 @@ import {
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
 
-function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy" }) {
+function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDifficulty }) {
   const [board, setBoard] = useState(INITIAL_BOARD);
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);

@@ -48,6 +48,7 @@ function App() {
   };
 
   const [resetGame, setResetGame] = useState(false);
+  const [difficulty, setDifficulty] = useState("Easy");
 
   useEffect(() => {
     if (resetGame) {
@@ -72,7 +73,7 @@ function App() {
           <div className="centered-container">
             <div className="App">
               <Routes>
-                <Route path="/" element={<GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} difficulty={difficulty} />} />
+                <Route path="/" element={<GameBoard timer={timer} setGameState={setGameState} resetGame={resetGame} difficulty={difficulty} setDifficulty={setDifficulty} />} />
                 <Route path="/help" element={<HelpPage />} />
                 <Route path="/terms" element={<TermsOfService />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
