@@ -7,7 +7,7 @@ function HelpPage() {
   };
   return (
     <div className="HelpPage">
-      <h1>Beat Me - Tectonic</h1>
+      <h1>Help</h1>
       <h2>Welcome to Beat-Me-Tectonic!</h2>
       <h2>Game Rules:</h2>
       <ul>
