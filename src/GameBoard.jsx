@@ -8,12 +8,14 @@ import {
   AREAS,
 } from "./Boards";
 
-window.updateBoard = function(newBoard, difficulty) {
-  const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
-  setBoard(newBoard);
-  setBoardHeight(newBoard.length);
-  setBoardWidth(newBoard[0].length);
-};
+useEffect(() => {
+  window.updateBoard = function(newBoard, difficulty) {
+    const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+    setBoard(newBoard);
+    setBoardHeight(newBoard.length);
+    setBoardWidth(newBoard[0].length);
+  };
+}, []);
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 
 function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState }) {
