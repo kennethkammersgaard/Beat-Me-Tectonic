@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('Help page opens when Help button is clicked', async ({ page }) => {
+test('Help page opens when Help button is clicked and closes when Back to game button is clicked', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
@@ -12,11 +12,6 @@ test('Help page opens when Help button is clicked', async ({ page }) => {
 
   // Check if the help page content is visible
   await expect(page.locator('h1:has-text("Help")')).toBeVisible();
-});
-
-test('Help page closes when Back to game button is clicked', async ({ page }) => {
-  // Navigate to the help page
-  await page.goto('http://localhost:5173/help');
 
   // Find and click the Back to game button
   await page.click('text=Back to game');
