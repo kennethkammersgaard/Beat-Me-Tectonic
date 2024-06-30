@@ -1,6 +1,6 @@
-export const BOARD_WIDTH = 5;
+export const BOARD_WIDTH = 4;
 export const BOARD_HEIGHT = 5;
-
+/*
 export const INITIAL_BOARD = [
   [0, 0, 0, 0, 0],
   [0, 0, 0, 2, 0],
@@ -24,9 +24,9 @@ export const END_BOARD = [
   [1, 3, 1, 2, 4],
   [2, 1, 3, 4, 1]
 ];
+*/
 
 
-/*
 export const INITIAL_BOARD = [
   [0, 0, 0, 0],
   [3, 0, 0, 5],
@@ -50,5 +50,5 @@ export const END_BOARD = [
   [5, 4, 5, 1],
   [3, 1, 2, 4],
 ];
-*/
+
 
