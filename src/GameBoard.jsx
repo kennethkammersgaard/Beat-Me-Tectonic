@@ -26,38 +26,22 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
 
   useEffect(() => {
     if (resetGame) {
-      const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
-      setBoard(selectedBoard.initial);
-      setBoardHeight(selectedBoard.initial.length);
-      setBoardWidth(selectedBoard.initial[0].length);
-      setBoardHeight(selectedBoard.initial.length);
-      setBoardWidth(selectedBoard.initial[0].length);
       setGameOver(false);
       setSelectedCell(null);
       setSelectedNumber(null);
       setInvalidCells([]);
       setGameState("game");
     }
-    const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
-    setBoard(selectedBoard.initial);
-    setBoardHeight(selectedBoard.initial.length);
-    setBoardWidth(selectedBoard.initial[0].length);
-  }, [resetGame, setGameState, difficulty]);
+  }, [resetGame, setGameState]);
 
   useEffect(() => {
     if (resetGame || timer >= 120) {
-      const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
-      setBoard(selectedBoard.initial);
       setGameOver(false);
       setSelectedCell(null);
       setSelectedNumber(null);
       setInvalidCells([]);
     }
-    const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
-    setBoard(selectedBoard.initial);
-    setBoardHeight(selectedBoard.initial.length);
-    setBoardWidth(selectedBoard.initial[0].length);
-  }, [resetGame, difficulty, timer]);
+  }, [resetGame, timer]);
 
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -178,10 +162,13 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
               <option value="Hard">Hard</option>
             </select>
             <button onClick={() => {
+              const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+              setBoard(selectedBoard.initial);
+              setBoardHeight(selectedBoard.initial.length);
+              setBoardWidth(selectedBoard.initial[0].length);
               setShowDifficultyOverlay(false);
               setGameState("game");
               setTimer(0);
-              window.location.reload();
             }} data-testid="start-button">Start</button>
           </div>
         </div>
