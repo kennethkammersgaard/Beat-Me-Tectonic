@@ -20,7 +20,7 @@ test('Overlay with Congratulations is shown when the game is completed', async (
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
-  // Update the board to INITIAL_BOARD_ALMOST_FINISHED
+  // Set the initial board to INITIAL_BOARD_ALMOST_FINISHED
   await page.evaluate(() => {
     window.updateBoard([
       [0, 2, 3, 4],

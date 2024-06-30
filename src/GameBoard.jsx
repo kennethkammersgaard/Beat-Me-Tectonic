@@ -22,6 +22,9 @@ function GameBoard({ timer, setGameState, resetGame }) {
     window.updateBoard = (newBoard) => {
       setBoard(newBoard);
     };
+    window.updateBoard = (newBoard) => {
+      setBoard(newBoard);
+    };
     if (isBoardComplete(board)) {
       setGameState("finished");
     }
