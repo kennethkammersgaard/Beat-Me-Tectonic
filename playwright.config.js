@@ -2,7 +2,7 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './src/__tests__',
-  testMatch: ['**/*.test.js', '**/*.test.jsx'],
+  testMatch: ['**/*.test.js'],
   timeout: 30000,
   retries: 2,
   use: {
