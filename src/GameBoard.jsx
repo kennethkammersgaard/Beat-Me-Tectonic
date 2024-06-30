@@ -154,7 +154,7 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
       {showDifficultyOverlay && (
         <div className="overlay">
           <div className="overlay-inner">
-            <h2>Vælg sværhedsgrad</h2>
+            <h2>Select Difficulty Level</h2>
             <p>When you click start, you begin straight away, and remember you go for the fastest time!</p>
             <select onChange={(e) => setDifficulty(e.target.value)} data-testid="difficulty-select">
               <option value="Easy">Easy</option>
