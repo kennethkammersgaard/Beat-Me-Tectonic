@@ -1,51 +1,13 @@
-export const INITIAL_BOARD = [
-  [0, 0, 0, 0],
-  [3, 0, 0, 5],
-  [0, 0, 3, 2],
-  [5, 0, 0, 0],
-  [0, 0, 0, 4],
-];
+import { BOARDS } from "./Boards";
 
-export const AREAS = [
-  ["A", "A", "B", "B"],
-  ["A", "A", "B", "B"],
-  ["C", "C", "D", "B"],
-  ["C", "C", "D", "D"],
-  ["C", "E", "D", "D"],
-];
+export const INITIAL_BOARD = BOARDS.easy[0].initial;
+export const AREAS = BOARDS.easy[0].areas;
+export const END_BOARD = BOARDS.easy[0].end;
 
-export const END_BOARD = [
-  [1, 2, 3, 4],
-  [3, 4, 1, 5],
-  [1, 2, 3, 2],
-  [5, 4, 5, 1],
-  [3, 1, 2, 4],
-];
+export const INITIAL_BOARD_ALMOST_FINISHED = BOARDS.easy[1].initial;
 
-export const INITIAL_BOARD_ALMOST_FINISHED = [
-  [0, 2, 3, 4],
-  [3, 4, 1, 5],
-  [1, 2, 3, 2],
-  [5, 4, 5, 1],
-  [3, 1, 2, 4],
-];
-
-
-export const INITIAL_BOAR_2 = [
-  [0, 1, 0, 0, 2],
-  [0, 0, 0, 0, 0],
-  [0, 5, 0, 0, 0],
-  [0, 0, 0, 0, 1],
-  [0, 0, 2, 0, 0],
-];
-
-export const AREAS_2 = [
-  ["A", "A", "A", "A", "B"],
-  ["A", "C", "C", "B", "B"],
-  ["C", "C", "D", "B", "B"],
-  ["C", "D", "D", "D", "F"],
-  ["E", "E", "D", "F", "F"],
-];
+export const INITIAL_BOARD_2 = BOARDS.medium[0].initial;
+export const AREAS_2 = BOARDS.medium[0].areas;
 
 export const BOARD_HEIGHT = INITIAL_BOARD.length;
 export const BOARD_WIDTH = INITIAL_BOARD[0].length;
