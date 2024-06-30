@@ -4,10 +4,12 @@ test('Nyt spil starter med korrekt setup', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
-  // Click the New game button
+  // Select the difficulty level
+  await page.selectOption('select#difficulty', 'easy');
   await page.click('button:has-text("New game")');
 
-  // Check if the first cell (top-left) is empty
+  // Click the New game button
+  await page.click('button:has-text("New game")');
   const firstCell = await page.locator('.cell').first();
   await expect(firstCell).toHaveText('');
 
