@@ -14,8 +14,10 @@ module.exports = {
     "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js",
   },
   testMatch: [
-    "**/__tests__/**/*.[jt]s?(x)",
-    "**/?(*.)+(spec|test).[jt]s?(x)",
+    "**/__tests__/**/*.js",
+    "**/__tests__/**/*.jsx",
+    "**/?(*.)+(spec|test).js",
+    "**/?(*.)+(spec|test).jsx",
   ],
   extensionsToTreatAsEsm: [".ts", ".tsx", ".jsx"],
   moduleFileExtensions: [
