@@ -8,14 +8,7 @@ import {
   AREAS,
 } from "./Boards";
 
-useEffect(() => {
-  window.updateBoard = function(newBoard, difficulty) {
-    const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
-    setBoard(newBoard);
-    setBoardHeight(newBoard.length);
-    setBoardWidth(newBoard[0].length);
-  };
-}, []);
+import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 
 export default function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState }) {
@@ -29,6 +22,13 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
+    window.updateBoard = function(newBoard, difficulty) {
+      const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+      setBoard(newBoard);
+      setBoardHeight(newBoard.length);
+      setBoardWidth(newBoard[0].length);
+    };
+  }, []);
     if (isBoardComplete(board)) {
       setGameState("finished");
     }
