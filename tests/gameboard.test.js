@@ -4,11 +4,14 @@ test('Nyt spil starter med korrekt setup', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
+  // Wait for the overlay to be visible
+  await page.waitForSelector('.overlay-inner');
+
   // Select the difficulty level
   await page.selectOption('select[data-testid="difficulty-select"]', 'easy');
-  
+
   // Click the Start button
-  await page.click('button:has-text("Start")');
+  await page.click('button[data-testid="start-button"]');
 
   // Click the New game button
   const firstCell = await page.locator('.cell').first();
