@@ -9,6 +9,7 @@ import PrivacyPolicy from "./PrivacyPolicy";
 
 function App() {
   const [gameState, setGameState] = useState("game");
+  const [resetGame, setResetGame] = useState(false);
   const [timer, setTimer] = useState(0);
 
   useEffect(() => {
@@ -23,9 +24,9 @@ function App() {
 
   const startGame = () => {
     setShowDifficultyOverlay(true);
-    setTimer(0);
     setResetGame(true);
-    setTimer(0);
+    setResetGame(true);
+    setResetGame(true);
   };
 
   const showHelp = () => {
