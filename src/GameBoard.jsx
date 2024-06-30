@@ -181,6 +181,7 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
               setShowDifficultyOverlay(false);
               setGameState("game");
               setTimer(0);
+              window.location.reload();
             }} data-testid="start-button">Start</button>
           </div>
         </div>
