@@ -35,9 +35,6 @@ function GameBoard({ timer, setGameState, resetGame }) {
     }
   }, [resetGame, setGameState]);
 
-
-
-
   useEffect(() => {
     if (resetGame || timer >= 120) {
       setBoard(INITIAL_BOARD);
@@ -47,6 +44,21 @@ function GameBoard({ timer, setGameState, resetGame }) {
       setInvalidCells([]);
     }
   }, [resetGame]);
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      const key = parseInt(event.key);
+      if (key >= 1 && key <= 5) {
+        handleNumberClick(key);
+      }
+    };
+
+    window.addEventListener('keypress', handleKeyPress);
+
+    return () => {
+      window.removeEventListener('keypress', handleKeyPress);
+    };
+  }, [selectedCell, board]);
 
   const handleCellClick = (row, col) => {
     if (gameOver) return;
