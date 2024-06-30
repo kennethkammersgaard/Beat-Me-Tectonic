@@ -56,7 +56,7 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
-  // Set the initial board to INITIAL_BOARD_ALMOST_FINISHED
+  // Set the initial board to the test board
   await page.evaluate(() => {
     window.updateBoard([
       [0, 2, 3, 4],
@@ -64,7 +64,7 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
       [1, 2, 3, 2],
       [5, 4, 5, 1],
       [3, 1, 2, 4],
-    ]);
+    ], 'test');
   });
 
   // Enter the number 1 into the first cell
