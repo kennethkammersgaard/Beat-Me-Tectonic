@@ -114,7 +114,7 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
   const isNumberAvailable = (number) => {
     if (!selectedCell) return false;
     const { row, col } = selectedCell;
-    const area = AREAS[row][col];
+    const area = BOARDS[difficulty.toLowerCase()][0].areas[row][col];
     const areaSize = board
       .flat()
       .filter(
