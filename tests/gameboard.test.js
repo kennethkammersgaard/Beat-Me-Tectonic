@@ -5,7 +5,7 @@ test('Nyt spil starter med korrekt setup', async ({ page }) => {
   await page.goto('http://localhost:5173');
 
   // Select the difficulty level
-  await page.selectOption('select#difficulty', 'easy');
+  await page.selectOption('select[data-testid="difficulty-select"]', 'easy');
   
   // Click the Start button
   await page.click('button:has-text("Start")');
