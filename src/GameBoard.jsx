@@ -88,7 +88,7 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
     newBoard[row][col] = number;
 
     const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
-    if (number === selectedBoard.end[row][col]) {
+    if (isValidMove(newBoard, row, col, boardWidth, boardHeight)) {
       setBoard(newBoard);
       setSelectedCell(null);
       setSelectedNumber(null);
