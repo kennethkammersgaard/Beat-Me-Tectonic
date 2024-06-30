@@ -188,11 +188,11 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "easy", setDif
                   style.borderRight ? "border-right" : ""
                 } ${style.borderBottom ? "border-bottom" : ""} ${
                   style.borderLeft ? "border-left" : ""
-                } ${isInvalid ? "incorrect" : cell === 0 ? selectedCell &&
+                } ${isInvalid ? "incorrect" : cell === 0 ? (selectedCell &&
                   selectedCell.row === rowIndex &&
                   selectedCell.col === colIndex
                   ? "selected"
-                  : ""
+                  : "")
                 : "correct"}`}
                 onClick={() => handleCellClick(rowIndex, colIndex)}
                 style={{
