@@ -20,19 +20,16 @@ test('Overlay with Congratulations is shown when the game is completed', async (
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
-  // Set the initial board to INITIAL_BOARD_ALMOST_FINISHED
+  // Update the board to INITIAL_BOARD_ALMOST_FINISHED
   await page.evaluate(() => {
-    window.localStorage.setItem('initialBoard', JSON.stringify([
+    window.updateBoard([
       [0, 2, 3, 4],
       [3, 4, 1, 5],
       [1, 2, 3, 2],
       [5, 4, 5, 1],
       [3, 1, 2, 4],
-    ]));
+    ]);
   });
-
-  // Reload the page to apply the initial board
-  await page.reload();
 
   // Enter the number 1 into the first cell
   const firstCell = await page.locator('.cell').first();

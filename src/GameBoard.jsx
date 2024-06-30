@@ -19,6 +19,9 @@ function GameBoard({ timer, setGameState, resetGame }) {
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
+    window.updateBoard = (newBoard) => {
+      setBoard(newBoard);
+    };
     if (isBoardComplete(board)) {
       setGameState("finished");
     }
