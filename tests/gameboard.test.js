@@ -12,6 +12,6 @@ test('New game starts with correct board setup', async ({ page }) => {
   await expect(firstCell).toHaveText('');
 
   // Check if the cell below the first one contains '3'
-  const cellBelow = await page.locator('.cell').nth(5); // The cell below is at index 5 (5x4 grid)
+  const cellBelow = await page.locator('.cell').nth(4); // The cell below is at index 4 (4x5 grid)
   await expect(cellBelow).toHaveText('3');
 });
