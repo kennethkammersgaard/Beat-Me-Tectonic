@@ -38,7 +38,6 @@ function App() {
 
   const closePopup = () => {
     setShowDifficultyOverlay(false);
-    setTimer(0);
     setResetGame(true);
     setGameState("game");
   };
