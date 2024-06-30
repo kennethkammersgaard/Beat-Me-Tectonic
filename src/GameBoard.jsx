@@ -38,6 +38,10 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
       setInvalidCells([]);
       setGameState("game");
     }
+    const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+    setBoard(selectedBoard.initial);
+    setBoardHeight(selectedBoard.initial.length);
+    setBoardWidth(selectedBoard.initial[0].length);
   }, [resetGame, setGameState, difficulty]);
 
   useEffect(() => {
@@ -49,6 +53,10 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
       setSelectedNumber(null);
       setInvalidCells([]);
     }
+    const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+    setBoard(selectedBoard.initial);
+    setBoardHeight(selectedBoard.initial.length);
+    setBoardWidth(selectedBoard.initial[0].length);
   }, [resetGame, difficulty, timer]);
 
   useEffect(() => {

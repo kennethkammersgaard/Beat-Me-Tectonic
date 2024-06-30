@@ -23,8 +23,8 @@ function App() {
   }, [gameState]);
 
   const startGame = () => {
-    setShowDifficultyOverlay(true);
-    setResetGame(true);
+    setShowDifficultyOverlay(false);
+    setResetGame(false);
     setTimer(0);
     setResetGame(true);
   };
