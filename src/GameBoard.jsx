@@ -188,12 +188,13 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
                   style.borderRight ? "border-right" : ""
                 } ${style.borderBottom ? "border-bottom" : ""} ${
                   style.borderLeft ? "border-left" : ""
-                } ${isInvalid ? "incorrect" : cell === 0 ? (selectedCell &&
+                } ${isInvalid ? "incorrect" : ""} ${
+                  cell === 0 && selectedCell &&
                   selectedCell.row === rowIndex &&
                   selectedCell.col === colIndex
                   ? "selected"
-                  : "")
-                : "correct"}`}
+                  : ""
+                } ${cell !== 0 && !isInvalid ? "correct" : ""}`}
                 onClick={() => handleCellClick(rowIndex, colIndex)}
                 style={{
                   width: "60px",
