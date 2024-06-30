@@ -5,7 +5,7 @@ import {
   BOARD_WIDTH,
   BOARD_HEIGHT,
   BOARDS,
-} from "./Constants";
+} from "./Boards";
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
 
@@ -42,13 +42,14 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
 
   useEffect(() => {
     if (resetGame || timer >= 120) {
-      setBoard(INITIAL_BOARD);
+      const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+      setBoard(selectedBoard.initial);
       setGameOver(false);
       setSelectedCell(null);
       setSelectedNumber(null);
       setInvalidCells([]);
     }
-  }, [resetGame]);
+  }, [resetGame, difficulty, timer]);
 
   useEffect(() => {
     const handleKeyPress = (event) => {
