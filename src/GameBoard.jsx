@@ -9,7 +9,6 @@ import {
 } from "./Boards";
 
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
-import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 
 export default function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState }) {
   const [board, setBoard] = useState(BOARDS.test[0].initial);
