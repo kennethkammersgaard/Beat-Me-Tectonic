@@ -11,8 +11,8 @@ import {
 window.updateBoard = function(newBoard, difficulty) {
   const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
   setBoard(newBoard);
-  setBoardHeight(selectedBoard.initial.length);
-  setBoardWidth(selectedBoard.initial[0].length);
+  setBoardHeight(newBoard.length);
+  setBoardWidth(newBoard[0].length);
 };
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 
