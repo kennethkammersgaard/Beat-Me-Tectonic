@@ -11,7 +11,7 @@ import {
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
 
-function GameBoard({ timer, setGameState, resetGame }) {
+function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy" }) {
   const [board, setBoard] = useState(INITIAL_BOARD);
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
@@ -208,7 +208,7 @@ function GameBoard({ timer, setGameState, resetGame }) {
         <div className="progress-bar-inner" style={{ width: `${Math.min((timer / 240) * 100, 100)}%` }}></div>
         <div className="progress-bar-marker" style={{ left: `${Math.min((timer / 240) * 100, 100)}%` }}></div>
       </div>
-      <div className="Timer" data-testid="timer">Time: {formatTime(timer)}</div>
+      <div className="Timer" data-testid="timer">Time: {formatTime(timer)} <br /> Sværhedsgrad: {difficulty}</div>
     </div>
   );
 }
