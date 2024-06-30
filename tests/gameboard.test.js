@@ -58,13 +58,7 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
 
   // Set the initial board to the test board
   await page.evaluate(() => {
-    window.updateBoard([
-      [0, 2, 3, 4],
-      [3, 4, 1, 5],
-      [1, 2, 3, 2],
-      [5, 4, 5, 1],
-      [3, 1, 2, 4],
-    ], 'test');
+    window.updateBoard(0, 'test');
   });
 
   // Enter the number 1 into the first cell
