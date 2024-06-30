@@ -4,16 +4,6 @@ test('Nyt spil starter med korrekt setup', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
-  // Wait for the overlay to be visible
-  await page.waitForSelector('.overlay-inner');
-
-  // Select the difficulty level
-  await page.selectOption('select[data-testid="difficulty-select"]', 'Easy');
-
-  // Click the Start button
-  await page.click('button[data-testid="start-button"]');
-
-  // Click the New game button
   const firstCell = await page.locator('.cell').first();
   await expect(firstCell).toHaveText('');
 
@@ -26,11 +16,11 @@ test('Tjek om bruger kan vælge sværhedsgrad', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
-  // Select the difficulty level
-  await page.selectOption('select[data-testid="difficulty-select"]', 'Easy');
-
   // Click the New game button
   await page.click('button:has-text("New game")');
+
+  // Select the difficulty level
+  await page.selectOption('select[data-testid="difficulty-select"]', 'Easy');
 
   // Select the medium difficulty
   await page.selectOption('select[data-testid="difficulty-select"]', 'Medium');
@@ -48,9 +38,6 @@ test('Tjek om bruger kan vælge sværhedsgrad', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
-  // Click the New game button
-  await page.click('button:has-text("New game")');
-
   // Select the first cell
   const firstCell = await page.locator('.cell').first();
   await firstCell.click();
@@ -65,7 +52,7 @@ test('Tjek om bruger kan vælge sværhedsgrad', async ({ page }) => {
 });
 
 
-test('Overlay with Congratulations is shown when the game is completed', async ({ page }) => {
+test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
