@@ -29,6 +29,12 @@ test('User selects a medium board and sees the difficulty level', async ({ page 
   // Check if the difficulty level is displayed correctly
   const difficultyText = await page.locator('.Timer').textContent();
   expect(difficultyText).toContain('Sværhedsgrad: Medium');
+
+  // Check if the board dimensions are 5x5
+  const cells = await page.locator('.cell');
+  expect(await cells.count()).toBe(25);
+  const difficultyText = await page.locator('.Timer').textContent();
+  expect(difficultyText).toContain('Sværhedsgrad: Medium');
   
   // Navigate to the home page
   await page.goto('http://localhost:5173');
