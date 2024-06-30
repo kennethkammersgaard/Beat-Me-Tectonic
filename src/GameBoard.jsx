@@ -11,6 +11,8 @@ import "./App.css";
 
 function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay }) {
   const [board, setBoard] = useState(BOARDS[difficulty.toLowerCase()][0].initial);
+  const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty.toLowerCase()][0].initial.length);
+  const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty.toLowerCase()][0].initial[0].length);
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [invalidCells, setInvalidCells] = useState([]);
@@ -26,6 +28,10 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
     if (resetGame) {
       const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
       setBoard(selectedBoard.initial);
+      setBoardHeight(selectedBoard.initial.length);
+      setBoardWidth(selectedBoard.initial[0].length);
+      setBoardHeight(selectedBoard.initial.length);
+      setBoardWidth(selectedBoard.initial[0].length);
       setGameOver(false);
       setSelectedCell(null);
       setSelectedNumber(null);
@@ -49,7 +55,7 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
     const handleKeyPress = (event) => {
       const key = parseInt(event.key);
       if (key >= 1 && key <= 5) {
-        handleNumberClick(key);
+        handleNumberClick(key, boardWidth, boardHeight);
       }
     };
 
@@ -74,7 +80,7 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
       setSelectedCell({ row, col });
     };
 
-  const handleNumberClick = (number) => {
+  const handleNumberClick = (number, boardWidth, boardHeight) => {
     if (!selectedCell || gameOver) return;
     const { row, col } = selectedCell;
 
@@ -163,10 +169,10 @@ function GameBoard({ timer, setGameState, resetGame, difficulty = "Easy", setDif
           </div>
         </div>
       )}
-      <div className="board" style={{ maxWidth: `${BOARD_WIDTH * 60}px`, margin: "20px auto" }} data-testid="board">
+      <div className="board" style={{ maxWidth: `${boardWidth * 60}px`, margin: "20px auto" }} data-testid="board">
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => {
-            const style = getCellBorderStyle(rowIndex, colIndex);
+            const style = getCellBorderStyle(rowIndex, colIndex, boardWidth, boardHeight);
             const isInvalid = invalidCells.some(
               (c) => c.row === rowIndex && c.col === colIndex,
             );
