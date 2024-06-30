@@ -178,15 +178,16 @@ function GameBoard({ timer, setGameState, resetGame }) {
                   justifyContent: "center",
                   alignItems: "center",
                   cursor: "pointer",
-                  backgroundColor: isInvalid
-                    ? "red"
-                    : cell === 0
-                      ? selectedCell &&
-                        selectedCell.row === rowIndex &&
-                        selectedCell.col === colIndex
-                        ? "yellow"
-                        : "white"
-                      : "lightgreen",
+                  className={`cell ${style.borderTop ? "border-top" : ""} ${
+                    style.borderRight ? "border-right" : ""
+                  } ${style.borderBottom ? "border-bottom" : ""} ${
+                    style.borderLeft ? "border-left" : ""
+                  } ${isInvalid ? "incorrect" : cell === 0 ? selectedCell &&
+                    selectedCell.row === rowIndex &&
+                    selectedCell.col === colIndex
+                    ? "selected"
+                    : ""
+                  : "correct"}`}
                   fontSize: "24px",
                   fontWeight: "bold",
                 }}

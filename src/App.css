@@ -325,3 +325,14 @@ body {
 .button-container button:hover {
   background-color: #45a049;
 }
+.cell.incorrect {
+  background-color: red;
+}
+
+.cell.correct {
+  background-color: lightgreen;
+}
+
+.cell.selected {
+  background-color: yellow;
+}
