@@ -46,7 +46,7 @@ function App() {
   };
 
   const [showDifficultyOverlay, setShowDifficultyOverlay] = useState(false);
-  const [difficulty, setDifficulty] = useState("easy");
+  const [difficulty, setDifficulty] = useState("Easy");
 
   useEffect(() => {
     if (resetGame) {

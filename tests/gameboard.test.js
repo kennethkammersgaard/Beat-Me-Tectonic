@@ -8,7 +8,7 @@ test('Nyt spil starter med korrekt setup', async ({ page }) => {
   await page.waitForSelector('.overlay-inner');
 
   // Select the difficulty level
-  await page.selectOption('select[data-testid="difficulty-select"]', 'easy');
+  await page.selectOption('select[data-testid="difficulty-select"]', 'Easy');
 
   // Click the Start button
   await page.click('button[data-testid="start-button"]');
@@ -27,13 +27,13 @@ test('Tjek om bruger kan vælge sværhedsgrad', async ({ page }) => {
   await page.goto('http://localhost:5173');
 
   // Select the difficulty level
-  await page.selectOption('select[data-testid="difficulty-select"]', 'easy');
+  await page.selectOption('select[data-testid="difficulty-select"]', 'Easy');
 
   // Click the New game button
   await page.click('button:has-text("New game")');
 
   // Select the medium difficulty
-  await page.selectOption('select[data-testid="difficulty-select"]', 'medium');
+  await page.selectOption('select[data-testid="difficulty-select"]', 'Medium');
 
   // Check if the difficulty level is displayed correctly
   const difficultyText = await page.locator('.Timer').textContent();

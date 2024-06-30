@@ -10,10 +10,10 @@ import {
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 import "./App.css";
 
-function GameBoard({ setGameState, resetGame, difficulty = "easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState }) {
-  const [board, setBoard] = useState(BOARDS[difficulty.toLowerCase()][0].initial);
-  const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty.toLowerCase()][0].initial.length);
-  const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty.toLowerCase()][0].initial[0].length);
+function GameBoard({ setGameState, resetGame, difficulty = "Easy", setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState }) {
+  const [board, setBoard] = useState(BOARDS[difficulty][0].initial);
+  const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty][0].initial.length);
+  const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty][0].initial[0].length);
   const [timer, setTimer] = useState(0);
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
@@ -62,7 +62,7 @@ function GameBoard({ setGameState, resetGame, difficulty = "easy", setDifficulty
 
   useEffect(() => {
     if (resetGame) {
-      const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+      const selectedBoard = BOARDS[difficulty][0];
       setBoard(selectedBoard.initial);
       setBoardHeight(selectedBoard.initial.length);
       setBoardWidth(selectedBoard.initial[0].length);
@@ -101,7 +101,7 @@ function GameBoard({ setGameState, resetGame, difficulty = "easy", setDifficulty
     const newBoard = board.map((r) => [...r]);
     newBoard[row][col] = number;
 
-    const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+    const selectedBoard = BOARDS[difficulty][0];
     if (isValidMove(newBoard, row, col, boardWidth, boardHeight)) {
       setBoard(newBoard);
       setSelectedCell(null);
@@ -171,12 +171,12 @@ function GameBoard({ setGameState, resetGame, difficulty = "easy", setDifficulty
             <h2>Select Difficulty Level</h2>
             <p>When you click start, you begin straight away, and remember you go for the fastest time!</p>
             <select onChange={(e) => setDifficulty(e.target.value)} data-testid="difficulty-select">
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
             </select>
             <button onClick={() => {
-              const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+              const selectedBoard = BOARDS[difficulty][0];
               setBoard(selectedBoard.initial);
               setBoardHeight(selectedBoard.initial.length);
               setBoardWidth(selectedBoard.initial[0].length);
