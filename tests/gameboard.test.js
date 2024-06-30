@@ -16,6 +16,22 @@ test('New game starts with correct board setup', async ({ page }) => {
   await expect(cellBelow).toHaveText('3');
 });
 
+test('Button 5 is disabled when the first cell is selected', async ({ page }) => {
+  // Navigate to the home page
+  await page.goto('http://localhost:5173');
+
+  // Click the New game button
+  await page.click('button:has-text("New game")');
+
+  // Select the first cell
+  const firstCell = await page.locator('.cell').first();
+  await firstCell.click();
+
+  // Check if the button 5 is disabled
+  const button5 = await page.locator('button:has-text("5")');
+  await expect(button5).toBeDisabled();
+});
+
 test('Overlay with Congratulations is shown when the game is completed', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
