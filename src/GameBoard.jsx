@@ -8,6 +8,7 @@ import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.js
 
 export default function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState, timer, setTimer }) {
   const [board, setBoard] = useState(BOARDS[difficulty.toLowerCase()][0].initial);
+  const [solution, setSolution] = useState(BOARDS[difficulty.toLowerCase()][0].end);
   const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty.toLowerCase()][0].initial.length);
   const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty.toLowerCase()][0].initial[0].length);
   const [selectedCell, setSelectedCell] = useState(null);
@@ -59,6 +60,7 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
     if (resetGame || showDifficultyOverlay) {
       const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
       setBoard(selectedBoard.initial);
+      setSolution(selectedBoard.end);
       setBoardHeight(selectedBoard.initial.length);
       setBoardWidth(selectedBoard.initial[0].length);
       setGameOver(false);
@@ -194,7 +196,7 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
                   selectedCell.col === colIndex
                   ? "selected"
                   : ""
-                } ${cell !== 0 && !isInvalid ? "correct" : ""}`}
+                } ${cell !== 0 && cell === solution[rowIndex][colIndex] ? "correct" : ""}`}
                 onClick={() => handleCellClick(rowIndex, colIndex)}
                 style={{
                   width: "60px",
