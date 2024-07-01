@@ -6,11 +6,12 @@ import {
 
 import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.jsx";
 
-export default function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState, timer, setTimer }) {
-  const [board, setBoard] = useState(BOARDS[difficulty.toLowerCase()][0].initial);
-  const [solution, setSolution] = useState(BOARDS[difficulty.toLowerCase()][0].end);
-  const [boardHeight, setBoardHeight] = useState(BOARDS[difficulty.toLowerCase()][0].initial.length);
-  const [boardWidth, setBoardWidth] = useState(BOARDS[difficulty.toLowerCase()][0].initial[0].length);
+export default function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState, timer, setTimer, isTest = false }) {
+  const boardType = isTest ? 'test' : difficulty.toLowerCase();
+  const [board, setBoard] = useState(BOARDS[boardType][0].initial);
+  const [solution, setSolution] = useState(BOARDS[boardType][0].end);
+  const [boardHeight, setBoardHeight] = useState(BOARDS[boardType][0].initial.length);
+  const [boardWidth, setBoardWidth] = useState(BOARDS[boardType][0].initial[0].length);
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [invalidCells, setInvalidCells] = useState([]);
@@ -58,7 +59,8 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
 
   useEffect(() => {
     if (resetGame || showDifficultyOverlay) {
-      const selectedBoard = BOARDS[difficulty.toLowerCase()][0];
+      const boardType = isTest ? 'test' : difficulty.toLowerCase();
+      const selectedBoard = BOARDS[boardType][0];
       setBoard(selectedBoard.initial);
       setSolution(selectedBoard.end);
       setBoardHeight(selectedBoard.initial.length);
@@ -68,7 +70,7 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
       setSelectedNumber(null);
       setInvalidCells([]);
     }
-  }, [resetGame, difficulty, showDifficultyOverlay]);
+  }, [resetGame, difficulty, showDifficultyOverlay, isTest]);
 
     const handleCellClick = (row, col) => {
       if (gameOver) return;
