@@ -190,7 +190,7 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
                   style.borderRight ? "border-right" : ""
                 } ${style.borderBottom ? "border-bottom" : ""} ${
                   style.borderLeft ? "border-left" : ""
-                } ${isInvalid ? "incorrect" : ""} ${
+                } ${isInvalid || (cell !== 0 && cell !== solution[rowIndex][colIndex]) ? "incorrect" : ""} ${
                   cell === 0 && selectedCell &&
                   selectedCell.row === rowIndex &&
                   selectedCell.col === colIndex
