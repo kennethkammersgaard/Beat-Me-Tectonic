@@ -29,7 +29,7 @@ function App() {
   };
 
   const showHelp = () => {
-    setGameState("help");
+    window.location.href = "/help";
   };
 
   const showTerms = () => {
