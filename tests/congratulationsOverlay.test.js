@@ -5,7 +5,7 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
   await page.goto('http://localhost:5173');
 
   // Select the test board
-  await page.evaluate(async () => {
+  await page.evaluateHandle(async (endBoard, initialBoard) => {
     const BOARDS = {
       test: [
         {
@@ -27,8 +27,6 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
       ],
     };
 
-    const endBoard = BOARDS['test'][0].end;
-    const initialBoard = BOARDS['test'][0].initial;
 
     for (let row = 0; row < endBoard.length; row++) {
       for (let col = 0; col < endBoard[row].length; col++) {
@@ -40,7 +38,7 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
           await new Promise(resolve => setTimeout(resolve, 100));
           console.log(`Indtaster værdi: ${endBoard[row][col]} i celle: row ${row}, col ${col}`);
           cell.textContent = `${endBoard[row][col]}`;
-          await page.keyboard.press(`${endBoard[row][col]}`);
+          document.dispatchEvent(new KeyboardEvent('keydown', { key: `${endBoard[row][col]}` }));
           console.log(`Indtastning af værdi: ${endBoard[row][col]} i celle: row ${row}, col ${col} udført`);
           await new Promise(resolve => setTimeout(resolve, 100));
           // Vent kort tid for at sikre, at DOM'en opdateres
@@ -53,7 +51,7 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
 
     // Vent kort tid for at sikre, at overlayet vises
     await new Promise(resolve => setTimeout(resolve, 500));
-  });
+  }, BOARDS['test'][0].end, BOARDS['test'][0].initial);
 
   // Tjek om overlayet med Congratulations vises
   console.log('Tjekker om overlay vises');
