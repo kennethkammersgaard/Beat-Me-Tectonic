@@ -40,6 +40,7 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
           await new Promise(resolve => setTimeout(resolve, 100));
           console.log(`Indtaster værdi: ${endBoard[row][col]} i celle: row ${row}, col ${col}`);
           cell.textContent = `${endBoard[row][col]}`;
+          await page.keyboard.press(`${endBoard[row][col]}`);
           console.log(`Indtastning af værdi: ${endBoard[row][col]} i celle: row ${row}, col ${col} udført`);
           await new Promise(resolve => setTimeout(resolve, 100));
           // Vent kort tid for at sikre, at DOM'en opdateres
