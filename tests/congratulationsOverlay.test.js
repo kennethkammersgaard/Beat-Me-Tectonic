@@ -34,7 +34,9 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
       for (let col = 0; col < endBoard[row].length; col++) {
         if (initialBoard[row][col] === 0) {
           const cell = document.querySelector(`.cell[data-testid="cell-${row}-${col}"]`);
+          console.log(`Klikker på celle: row ${row}, col ${col}`);
           cell.click();
+          console.log(`Indtaster værdi: ${endBoard[row][col]} i celle: row ${row}, col ${col}`);
           document.dispatchEvent(new KeyboardEvent('keydown', { key: `${endBoard[row][col]}` }));
         }
       }
@@ -42,7 +44,12 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
   });
 
   // Check if the overlay with Congratulations is shown
+  console.log('Tjekker om overlay vises');
   const overlay = await page.locator('.overlay-inner');
+  const isVisible = await overlay.isVisible();
+  console.log(`Overlay synlig: ${isVisible}`);
   await expect(overlay).toBeVisible();
+  const overlayText = await overlay.textContent();
+  console.log(`Overlay tekst: ${overlayText}`);
   await expect(overlay).toHaveText(/Congratulations! You completed the game!/);
 });
