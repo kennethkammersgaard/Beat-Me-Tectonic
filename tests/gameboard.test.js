@@ -102,3 +102,27 @@ test('Cellevæg mellem 0,1 og 0,2 er tyk', async ({ page }) => {
   await expect(cell01).toHaveClass(/border-right/);
   await expect(cell02).toHaveClass(/border-left/);
 });
+
+test('Cellevæg mellem 0,0 og 0,1 er tynd og grå', async ({ page }) => {
+  // Navigate to the home page
+  await page.goto('http://localhost:5173');
+
+  // Get the cells at positions 0,0 and 0,1
+  const cell00 = await page.locator('.cell').nth(0);
+  const cell01 = await page.locator('.cell').nth(1);
+
+  // Check if the cells do not have the thick border classes
+  await expect(cell00).not.toHaveClass(/border-right/);
+  await expect(cell01).not.toHaveClass(/border-left/);
+
+  // Check if the cells have the default border style (thin and gray)
+  const cell00BorderRight = await cell00.evaluate((el) => 
+    window.getComputedStyle(el).getPropertyValue('border-right')
+  );
+  const cell01BorderLeft = await cell01.evaluate((el) => 
+    window.getComputedStyle(el).getPropertyValue('border-left')
+  );
+
+  expect(cell00BorderRight).toBe('1px solid rgb(204, 204, 204)');
+  expect(cell01BorderLeft).toBe('1px solid rgb(204, 204, 204)');
+});
