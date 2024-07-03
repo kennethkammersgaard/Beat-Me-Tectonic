@@ -4,28 +4,28 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
-  // Select the test board
+  const BOARDS = {
+    test: [
+      {
+        initial: [
+          [0, 0, 0, 0],
+          [3, 0, 0, 5],
+          [0, 0, 3, 2],
+          [5, 0, 0, 0],
+          [0, 0, 0, 4],
+        ],
+        end: [
+          [1, 2, 3, 4],
+          [3, 4, 1, 5],
+          [1, 2, 3, 2],
+          [5, 4, 5, 1],
+          [3, 1, 2, 4],
+        ],
+      },
+    ],
+  };
+
   await page.evaluateHandle(async (endBoard, initialBoard) => {
-    const BOARDS = {
-      test: [
-        {
-          initial: [
-            [0, 0, 0, 0],
-            [3, 0, 0, 5],
-            [0, 0, 3, 2],
-            [5, 0, 0, 0],
-            [0, 0, 0, 4],
-          ],
-          end: [
-            [1, 2, 3, 4],
-            [3, 4, 1, 5],
-            [1, 2, 3, 2],
-            [5, 4, 5, 1],
-            [3, 1, 2, 4],
-          ],
-        },
-      ],
-    };
 
 
     for (let row = 0; row < endBoard.length; row++) {
@@ -35,7 +35,6 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
           console.log(`Klikker på celle: row ${row}, col ${col}`);
           cell.click();
           console.log(`Klik på celle: row ${row}, col ${col} udført`);
-          await new Promise(resolve => setTimeout(resolve, 100));
           console.log(`Indtaster værdi: ${endBoard[row][col]} i celle: row ${row}, col ${col}`);
           cell.textContent = `${endBoard[row][col]}`;
           document.dispatchEvent(new KeyboardEvent('keydown', { key: `${endBoard[row][col]}` }));
