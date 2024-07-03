@@ -8,10 +8,22 @@ import { isValidMove, isBoardComplete, getCellBorderStyle } from "./GameLogic.js
 
 export default function GameBoard({ setGameState, resetGame, difficulty, setDifficulty, showDifficultyOverlay, setShowDifficultyOverlay, gameState, timer, setTimer, isTest = false }) {
   const boardType = isTest ? 'test' : difficulty.toLowerCase();
-  const [board, setBoard] = useState(BOARDS[boardType][0].initial);
-  const [solution, setSolution] = useState(BOARDS[boardType][0].end);
-  const [boardHeight, setBoardHeight] = useState(BOARDS[boardType][0].initial.length);
-  const [boardWidth, setBoardWidth] = useState(BOARDS[boardType][0].initial[0].length);
+  const [board, setBoard] = useState(() => {
+    const boards = BOARDS[boardType];
+    return boards && boards.length > 0 ? boards[0].initial : [];
+  });
+  const [solution, setSolution] = useState(() => {
+    const boards = BOARDS[boardType];
+    return boards && boards.length > 0 ? boards[0].end : [];
+  });
+  const [boardHeight, setBoardHeight] = useState(() => {
+    const boards = BOARDS[boardType];
+    return boards && boards.length > 0 ? boards[0].initial.length : 0;
+  });
+  const [boardWidth, setBoardWidth] = useState(() => {
+    const boards = BOARDS[boardType];
+    return boards && boards.length > 0 && boards[0].initial.length > 0 ? boards[0].initial[0].length : 0;
+  });
   const [selectedCell, setSelectedCell] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [invalidCells, setInvalidCells] = useState([]);
@@ -63,14 +75,18 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
       if (BOARDS[boardType] && BOARDS[boardType].length > 0) {
         const boardIndex = Math.floor(Math.random() * BOARDS[boardType].length);
         const selectedBoard = BOARDS[boardType][boardIndex];
-        setBoard(selectedBoard.initial);
-        setSolution(selectedBoard.end);
-        setBoardHeight(selectedBoard.initial.length);
-        setBoardWidth(selectedBoard.initial[0].length);
-        setGameOver(false);
-        setSelectedCell(null);
-        setSelectedNumber(null);
-        setInvalidCells([]);
+        if (selectedBoard && selectedBoard.initial && selectedBoard.end) {
+          setBoard(selectedBoard.initial);
+          setSolution(selectedBoard.end);
+          setBoardHeight(selectedBoard.initial.length);
+          setBoardWidth(selectedBoard.initial[0] ? selectedBoard.initial[0].length : 0);
+          setGameOver(false);
+          setSelectedCell(null);
+          setSelectedNumber(null);
+          setInvalidCells([]);
+        } else {
+          console.error(`Invalid board structure for difficulty: ${boardType}`);
+        }
       } else {
         console.error(`No boards available for difficulty: ${boardType}`);
       }
