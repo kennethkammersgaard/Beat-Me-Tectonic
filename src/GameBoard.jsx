@@ -60,7 +60,8 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
   useEffect(() => {
     if (resetGame || showDifficultyOverlay) {
       const boardType = isTest ? 'test' : difficulty.toLowerCase();
-      const selectedBoard = BOARDS[boardType][0];
+      const boardIndex = Math.floor(Math.random() * BOARDS[boardType].length);
+      const selectedBoard = BOARDS[boardType][boardIndex];
       setBoard(selectedBoard.initial);
       setSolution(selectedBoard.end);
       setBoardHeight(selectedBoard.initial.length);
