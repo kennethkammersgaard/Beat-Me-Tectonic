@@ -201,7 +201,7 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
       <div className="board" style={{ maxWidth: `${boardWidth * 60}px`, margin: "20px auto" }} data-testid="board">
         {board.map((row, rowIndex) =>
           row.map((cell, colIndex) => {
-            const style = getCellBorderStyle(rowIndex, colIndex, boardWidth, boardHeight);
+            const style = getCellBorderStyle(rowIndex, colIndex, BOARDS[difficulty.toLowerCase()][0].areas, boardWidth, boardHeight);
             const isInvalid = invalidCells.some(
               (c) => c.row === rowIndex && c.col === colIndex,
             );

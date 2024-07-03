@@ -42,7 +42,7 @@ export const isBoardComplete = (board) => {
   return board.every((row) => row.every((cell) => cell !== 0));
 };
 
-export const getCellBorderStyle = (row, col) => {
+export const getCellBorderStyle = (row, col, areas, boardWidth, boardHeight) => {
   const borderStyle = "1px solid #ccc";
   const thickBorderStyle = "2px solid black";
 
@@ -51,10 +51,10 @@ export const getCellBorderStyle = (row, col) => {
   let borderBottom = false;
   let borderLeft = false;
 
-  if (row === 0 || AREAS[row][col] !== AREAS[row - 1][col]) borderTop = true;
-  if (col === BOARD_WIDTH - 1 || AREAS[row][col] !== AREAS[row][col + 1]) borderRight = true;
-  if (row === BOARD_HEIGHT - 1 || AREAS[row][col] !== AREAS[row + 1][col]) borderBottom = true;
-  if (col === 0 || AREAS[row][col] !== AREAS[row][col - 1]) borderLeft = true;
+  if (row === 0 || areas[row][col] !== areas[row - 1][col]) borderTop = true;
+  if (col === boardWidth - 1 || areas[row][col] !== areas[row][col + 1]) borderRight = true;
+  if (row === boardHeight - 1 || areas[row][col] !== areas[row + 1][col]) borderBottom = true;
+  if (col === 0 || areas[row][col] !== areas[row][col - 1]) borderLeft = true;
 
   return { borderTop, borderRight, borderBottom, borderLeft };
 };
