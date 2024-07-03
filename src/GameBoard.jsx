@@ -75,11 +75,11 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
       if (BOARDS[boardType] && BOARDS[boardType].length > 0) {
         const boardIndex = Math.floor(Math.random() * BOARDS[boardType].length);
         const selectedBoard = BOARDS[boardType][boardIndex];
-        if (selectedBoard && selectedBoard.initial && selectedBoard.end) {
+        if (selectedBoard && selectedBoard.initial && selectedBoard.end && selectedBoard.areas) {
           setBoard(selectedBoard.initial);
           setSolution(selectedBoard.end);
           setBoardHeight(selectedBoard.initial.length);
-          setBoardWidth(selectedBoard.initial[0] ? selectedBoard.initial[0].length : 0);
+          setBoardWidth(selectedBoard.initial[0].length);
           setGameOver(false);
           setSelectedCell(null);
           setSelectedNumber(null);
