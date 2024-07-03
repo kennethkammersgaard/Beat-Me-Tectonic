@@ -89,3 +89,16 @@ test('Cell turns red when incorrect number is entered', async ({ page }) => {
   // Check if the cell has the 'incorrect' class (which should make it red)
   await expect(firstCell).toHaveClass(/incorrect/);
 });
+
+test('Cellevæg mellem 0,1 og 0,2 er tyk', async ({ page }) => {
+  // Navigate to the home page
+  await page.goto('http://localhost:5173');
+
+  // Get the cells at positions 0,1 and 0,2
+  const cell01 = await page.locator('.cell').nth(1);
+  const cell02 = await page.locator('.cell').nth(2);
+
+  // Check if the cells have the correct border classes
+  await expect(cell01).toHaveClass(/border-right/);
+  await expect(cell02).toHaveClass(/border-left/);
+});
