@@ -29,6 +29,10 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
   const [invalidCells, setInvalidCells] = useState([]);
   const [gameOver, setGameOver] = useState(false);
 
+  const selectBoard = (difficulty, isTest) => {
+    selectBoard(difficulty, isTest);
+  };
+
   useEffect(() => {
     if (isBoardComplete(board)) {
       setGameState("finished");
