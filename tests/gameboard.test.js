@@ -119,7 +119,16 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
       ],
     };
 
-    window.board = BOARDS['test'][0].initial;
+    const selectedBoard = BOARDS['test'][0];
+    window.board = selectedBoard.initial;
+    window.solution = selectedBoard.end;
+    window.boardHeight = selectedBoard.initial.length;
+    window.boardWidth = selectedBoard.initial[0].length;
+    window.gameOver = false;
+    window.selectedCell = null;
+    window.selectedNumber = null;
+    window.invalidCells = [];
+    window.timer = 0;
   });
 
   // Enter the number 1 into the first cell
