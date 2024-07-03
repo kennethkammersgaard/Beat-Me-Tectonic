@@ -5,7 +5,7 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
   await page.goto('http://localhost:5173');
 
   // Select the test board
-  await page.evaluate(() => {
+  await page.evaluateHandle(async () => {
     const BOARDS = {
       test: [
         {
@@ -44,7 +44,7 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
           await new Promise(resolve => setTimeout(resolve, 100));
         } else {
           console.log(`Celle: row ${row}, col ${col} er allerede udfyldt med værdi: ${initialBoard[row][col]}`);
-      }
+        }
     }
   });
 
