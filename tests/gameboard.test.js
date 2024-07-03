@@ -125,7 +125,9 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
       const boards = BOARDS[boardType];
       if (boards && boards.length > 0) {
         const selectedBoard = boards[0];
+        console.log('Selected Board Initial:', selectedBoard.initial);
         window.board = selectedBoard.initial;
+        console.log('Window Board:', window.board);
         console.log('Selected Board Initial:', selectedBoard.initial);
         window.board = selectedBoard.initial;
         window.boardHeight = selectedBoard.initial.length;
