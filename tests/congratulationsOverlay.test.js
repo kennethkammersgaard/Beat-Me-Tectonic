@@ -48,20 +48,15 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
           console.log(`Celle: row ${row}, col ${col} er allerede udfyldt med værdi: ${initialBoard[row][col]}`);
         }
     }
-  });
 
   // Check if the overlay with Congratulations is shown
-  console.log('Tjekker om overlay vises');
   console.log('Tjekker om overlay vises');
   const overlay = await page.locator('.overlay-inner');
   const isVisible = await overlay.isVisible();
   console.log(`Overlay synlig: ${isVisible}`);
-  const isVisible = await overlay.isVisible();
-  console.log(`Overlay synlig: ${isVisible}`);
-  await expect(overlay).toBeVisible();
-  const overlayText = await overlay.textContent();
-  console.log(`Overlay tekst: ${overlayText}`);
   const overlayText = await overlay.textContent();
   console.log(`Overlay tekst: ${overlayText}`);
   await expect(overlay).toHaveText(/Congratulations! You completed the game!/);
+};
+};  
 });
