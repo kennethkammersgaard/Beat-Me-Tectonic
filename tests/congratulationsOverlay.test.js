@@ -58,5 +58,4 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
   console.log(`Overlay tekst: ${overlayText}`);
   await expect(overlay).toHaveText(/Congratulations! You completed the game!/);
 };
-};  
 });
