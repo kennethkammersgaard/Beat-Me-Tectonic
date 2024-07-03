@@ -125,21 +125,13 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
       const boards = BOARDS[boardType];
       if (boards && boards.length > 0) {
         const selectedBoard = boards[0];
-        console.log('Selected Board Initial:', selectedBoard.initial);
-        console.log('Selected Board Initial:', selectedBoard.initial);
+/*        console.log('Selected Board Initial:', selectedBoard.initial);
         selectedBoard.initial.forEach((row, rowIndex) => {
           row.forEach((cell, colIndex) => {
             console.log(`Initial Board [${rowIndex}][${colIndex}]:`, cell);
           });
         });
-        window.board = selectedBoard.initial;
-        console.log('Window Board:', window.board);
-        window.board.forEach((row, rowIndex) => {
-          row.forEach((cell, colIndex) => {
-            console.log(`Window Board [${rowIndex}][${colIndex}]:`, cell);
-          });
-        });
-        console.log('Selected Board Initial:', selectedBoard.initial);
+*/        window.board = selectedBoard.initial;
         window.board = selectedBoard.initial;
         window.boardHeight = selectedBoard.initial.length;
         window.boardWidth = selectedBoard.initial[0].length;
