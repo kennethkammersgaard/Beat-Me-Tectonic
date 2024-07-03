@@ -29,8 +29,8 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
   const [invalidCells, setInvalidCells] = useState([]);
   const [gameOver, setGameOver] = useState(false);
 
-  const selectBoard = (difficulty, isTest) => {
-    const boardType = isTest ? 'test' : difficulty.toLowerCase();
+  const selectBoard = (difficulty) => {
+    const boardType = difficulty.toLowerCase();
     const boards = BOARDS[boardType];
     if (boards && boards.length > 0) {
       const selectedBoard = boards[0];
@@ -90,9 +90,9 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
 
   useEffect(() => {
     if (resetGame || showDifficultyOverlay) {
-      selectBoard(difficulty, isTest);
+      selectBoard(difficulty);
     }
-  }, [resetGame, difficulty, showDifficultyOverlay, isTest]);
+  }, [resetGame, difficulty, showDifficultyOverlay]);
 
     const handleCellClick = (row, col) => {
       if (gameOver) return;

@@ -120,8 +120,8 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
     };
 
     const selectedBoard = BOARDS['test'][0];
-    const selectBoard = (difficulty, isTest) => {
-      const boardType = isTest ? 'test' : difficulty.toLowerCase();
+    const selectBoard = (difficulty) => {
+      const boardType = difficulty.toLowerCase();
       const boards = BOARDS[boardType];
       if (boards && boards.length > 0) {
         const selectedBoard = boards[0];
@@ -139,7 +139,7 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
       }
     };
 
-    selectBoard('test', true);
+    selectBoard('test');
   });
 
   // Enter the number 1 into the first cell
