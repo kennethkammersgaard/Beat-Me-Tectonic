@@ -1,8 +1,8 @@
-import { BOARD_WIDTH, BOARD_HEIGHT, AREAS } from "./Boards";
+import { BOARD_WIDTH, BOARD_HEIGHT } from "./Boards";
 
-export const isValidMove = (board, row, col) => {
+export const isValidMove = (board, row, col, areas) => {
     const value = board[row][col];
-    const area = AREAS[row][col];
+    const area = areas[row][col];
 
     // Check area size and value
     const areaSize = board
