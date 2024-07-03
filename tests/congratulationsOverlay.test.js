@@ -44,20 +44,17 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
           await new Promise(resolve => setTimeout(resolve, 100));
           // Vent kort tid for at sikre, at DOM'en opdateres
           await new Promise(resolve => setTimeout(resolve, 100));
+        } else {
+          console.log(`Celle: row ${row}, col ${col} er allerede udfyldt med værdi: ${initialBoard[row][col]}`);
         }
       }
     }
 
     // Vent kort tid for at sikre, at overlayet vises
     await new Promise(resolve => setTimeout(resolve, 500));
-        } else {
-          console.log(`Celle: row ${row}, col ${col} er allerede udfyldt med værdi: ${initialBoard[row][col]}`);
-        }
-      }
-    }
   });
 
-  // Check if the overlay with Congratulations is shown
+  // Tjek om overlayet med Congratulations vises
   console.log('Tjekker om overlay vises');
   const overlay = await page.locator('.overlay-inner');
   const isVisible = await overlay.isVisible();
