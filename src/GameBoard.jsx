@@ -31,18 +31,29 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
 
   const selectBoard = (difficulty) => {
     const boardType = difficulty.toLowerCase();
+    console.log(`Selected difficulty: ${difficulty}`);
+    console.log(`Selected board type: ${boardType}`);
     const boards = BOARDS[boardType];
     if (boards && boards.length > 0) {
       const selectedBoard = boards[0];
       setBoard(selectedBoard.initial);
+      console.log('Selected Board Initial:', selectedBoard.initial);
       setSolution(selectedBoard.end);
+      console.log('Selected Board Solution:', selectedBoard.end);
       setBoardHeight(selectedBoard.initial.length);
+      console.log('Board Height:', selectedBoard.initial.length);
       setBoardWidth(selectedBoard.initial[0].length);
+      console.log('Board Width:', selectedBoard.initial[0].length);
       setGameOver(false);
+      console.log('Game Over:', false);
       setSelectedCell(null);
+      console.log('Selected Cell:', null);
       setSelectedNumber(null);
+      console.log('Selected Number:', null);
       setInvalidCells([]);
+      console.log('Invalid Cells:', []);
       setTimer(0);
+      console.log('Timer:', 0);
     } else {
       console.error(`No boards available for difficulty: ${boardType}`);
     }
