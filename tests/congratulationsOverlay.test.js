@@ -5,7 +5,7 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
   await page.goto('http://localhost:5173');
 
   // Select the test board
-  await page.evaluateHandle(async () => {
+  await page.evaluateHandle(async (page) => {
     const BOARDS = {
       test: [
         {
@@ -49,7 +49,7 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
         }
       }
     }
-  });
+  }, page);
 
   // Check if the overlay with Congratulations is shown
   console.log('Tjekker om overlay vises');
