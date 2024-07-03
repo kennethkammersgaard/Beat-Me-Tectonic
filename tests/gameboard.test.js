@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 
+
 test('Nyt spil starter med korrekt setup', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
@@ -11,6 +12,7 @@ test('Nyt spil starter med korrekt setup', async ({ page }) => {
   const cellBelow = await page.locator('.cell').nth(4); // The cell below is at index 4 (4x5 grid)
   await expect(cellBelow).toHaveText('3');
 });
+
 
 test('Tjek om bruger kan vælge sværhedsgrad', async ({ page }) => {
   // Navigate to the home page
@@ -35,6 +37,7 @@ test('Tjek om bruger kan vælge sværhedsgrad', async ({ page }) => {
   const difficultyText = await page.locator('.Timer').textContent();
   expect(difficultyText).toContain('Sværhedsgrad: Medium');
 });
+
 
 test('Første celle bliver grøn, når man indtaster det rigtige tal 1', async ({ page }) => {
   // Navigate to the home page
@@ -62,6 +65,7 @@ test('Første celle bliver grøn, når man indtaster det rigtige tal 1', async (
   // Check if the first cell has the 'correct' class
   await expect(firstCell).toHaveClass(/correct/);
 });
+
 
 test('Test om knapper bliver inaktive, hvis de ikke er tilgængelige', async ({ page }) => {
   // Navigate to the home page
@@ -101,12 +105,10 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
   await expect(overlay).toHaveText(/Congratulations! You completed the game!/);
 });
 
+
 test('Celle bliver rød, når der bliver indtastet forkert værdi', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
-
-  // Click the New game button
-  await page.click('button:has-text("New game")');
 
   // Get the first cell
   const firstCell = await page.locator('.cell').first();
@@ -118,6 +120,7 @@ test('Celle bliver rød, når der bliver indtastet forkert værdi', async ({ pag
   // Check if the cell has the 'incorrect' class (which should make it red)
   await expect(firstCell).toHaveClass(/incorrect/);
 });
+
 
 test('Cellevæg mellem to områder er tyk', async ({ page }) => {
   // Navigate to the home page
@@ -131,6 +134,7 @@ test('Cellevæg mellem to områder er tyk', async ({ page }) => {
   await expect(cell01).toHaveClass(/border-right/);
   await expect(cell02).toHaveClass(/border-left/);
 });
+
 
 test('Cellevæg mellem to celler i et område er tynd og grå', async ({ page }) => {
   // Navigate to the home page
