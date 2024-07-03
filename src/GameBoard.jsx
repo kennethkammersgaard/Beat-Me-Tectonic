@@ -30,7 +30,22 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
   const [gameOver, setGameOver] = useState(false);
 
   const selectBoard = (difficulty, isTest) => {
-    selectBoard(difficulty, isTest);
+    const boardType = isTest ? 'test' : difficulty.toLowerCase();
+    const boards = BOARDS[boardType];
+    if (boards && boards.length > 0) {
+      const selectedBoard = boards[0];
+      setBoard(selectedBoard.initial);
+      setSolution(selectedBoard.end);
+      setBoardHeight(selectedBoard.initial.length);
+      setBoardWidth(selectedBoard.initial[0].length);
+      setGameOver(false);
+      setSelectedCell(null);
+      setSelectedNumber(null);
+      setInvalidCells([]);
+      setTimer(0);
+    } else {
+      console.error(`No boards available for difficulty: ${boardType}`);
+    }
   };
 
   useEffect(() => {
@@ -75,25 +90,7 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
 
   useEffect(() => {
     if (resetGame || showDifficultyOverlay) {
-      const boardType = isTest ? 'test' : difficulty.toLowerCase();
-      if (BOARDS[boardType] && BOARDS[boardType].length > 0) {
-        const boardIndex = Math.floor(Math.random() * BOARDS[boardType].length);
-        const selectedBoard = BOARDS[boardType][boardIndex];
-        if (selectedBoard && selectedBoard.initial && selectedBoard.end && selectedBoard.areas) {
-          setBoard(selectedBoard.initial);
-          setSolution(selectedBoard.end);
-          setBoardHeight(selectedBoard.initial.length);
-          setBoardWidth(selectedBoard.initial[0].length);
-          setGameOver(false);
-          setSelectedCell(null);
-          setSelectedNumber(null);
-          setInvalidCells([]);
-        } else {
-          console.error(`Invalid board structure for difficulty: ${boardType}`);
-        }
-      } else {
-        console.error(`No boards available for difficulty: ${boardType}`);
-      }
+      selectBoard(difficulty, isTest);
     }
   }, [resetGame, difficulty, showDifficultyOverlay, isTest]);
 
