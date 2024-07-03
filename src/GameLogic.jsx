@@ -1,4 +1,4 @@
-import { BOARD_WIDTH, BOARD_HEIGHT } from "./Boards";
+import { BOARD_WIDTH, BOARD_HEIGHT, BOARDS } from "./Boards";
 
 export const isValidMove = (board, row, col, areas) => {
     const value = board[row][col];
@@ -15,7 +15,7 @@ export const isValidMove = (board, row, col, areas) => {
 
     // Check area uniqueness
     const areaValues = board
-        .flatMap((r, i) => r.map((cell, j) => (AREAS[i][j] === area ? cell : null)))
+        .flatMap((r, i) => r.map((cell, j) => (areas[i][j] === area ? cell : null)))
         .filter((v) => v !== null);
     if (areaValues.filter((v) => v === value).length > 1) return false;
 
@@ -30,7 +30,7 @@ export const isValidMove = (board, row, col, areas) => {
                 newCol >= 0 &&
                 newCol < BOARD_WIDTH
             ) {
-                if (board[newRow][newCol] === value) return false;
+                if (board[newRow][newCol] === value && areas[newRow][newCol] === area) return false;
             }
         }
     }
@@ -51,10 +51,10 @@ export const getCellBorderStyle = (row, col, areas, boardWidth, boardHeight) => 
   let borderBottom = false;
   let borderLeft = false;
 
-  if (row === 0 || areas[row][col] !== areas[row - 1][col]) borderTop = true;
-  if (col === boardWidth - 1 || areas[row][col] !== areas[row][col + 1]) borderRight = true;
-  if (row === boardHeight - 1 || areas[row][col] !== areas[row + 1][col]) borderBottom = true;
-  if (col === 0 || areas[row][col] !== areas[row][col - 1]) borderLeft = true;
+  if (row === 0 || areas[row][col] !== areas[row - 1][col]) borderTop = thickBorderStyle;
+  if (col === boardWidth - 1 || areas[row][col] !== areas[row][col + 1]) borderRight = thickBorderStyle;
+  if (row === boardHeight - 1 || areas[row][col] !== areas[row + 1][col]) borderBottom = thickBorderStyle;
+  if (col === 0 || areas[row][col] !== areas[row][col - 1]) borderLeft = thickBorderStyle;
 
   return { borderTop, borderRight, borderBottom, borderLeft };
 };
