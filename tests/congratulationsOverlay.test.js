@@ -25,7 +25,7 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
     ],
   };
 
-  await page.evaluateHandle(async ({ endBoard, initialBoard }) => {
+  await page.evaluate(async ({ endBoard, initialBoard }) => {
 
 
     for (let row = 0; row < endBoard.length; row++) {
