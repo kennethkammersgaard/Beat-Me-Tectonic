@@ -36,8 +36,34 @@ test('Tjek om bruger kan vælge sværhedsgrad', async ({ page }) => {
   expect(difficultyText).toContain('Sværhedsgrad: Medium');
 });
 
+test('Første celle bliver grøn, når man indtaster det rigtige tal 1', async ({ page }) => {
+  // Navigate to the home page
+  await page.goto('http://localhost:5173');
 
-  test('Test om knapper bliver inaktive, hvis de ikke er tilgængelige', async ({ page }) => {
+  // Click the New game button
+  await page.click('button:has-text("New game")');
+
+  // Select the Easy difficulty
+  await page.selectOption('select[data-testid="difficulty-select"]', 'Easy');
+
+  // Click the Start button
+  await page.click('button:has-text("Start")');
+
+  // Wait for the game board to be visible
+  await page.waitForSelector('.board', { state: 'visible' });
+
+  // Click on the first cell
+  const firstCell = await page.locator('.cell').first();
+  await firstCell.click();
+
+  // Press the '1' key
+  await page.keyboard.press('1');
+
+  // Check if the first cell has the 'correct' class
+  await expect(firstCell).toHaveClass(/correct/);
+});
+
+test('Test om knapper bliver inaktive, hvis de ikke er tilgængelige', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
