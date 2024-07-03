@@ -91,6 +91,34 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
 
   // Set the initial board to the test board
   await page.evaluate(() => {
+    const BOARDS = {
+      test: [
+        {
+          initial: [
+            [0, 2, 3, 4],
+            [3, 4, 1, 5],
+            [1, 2, 3, 2],
+            [5, 4, 5, 1],
+            [3, 1, 2, 4],
+          ],
+          end: [
+            [1, 2, 3, 4],
+            [3, 4, 1, 5],
+            [1, 2, 3, 2],
+            [5, 4, 5, 1],
+            [3, 1, 2, 4],
+          ],
+          areas: [
+            ["A", "A", "B", "B"],
+            ["A", "A", "B", "B"],
+            ["C", "C", "D", "B"],
+            ["C", "C", "D", "D"],
+            ["C", "E", "D", "D"],
+          ],
+        },
+      ],
+    };
+
     const selectBoard = (difficulty, isTest) => {
       const boardType = isTest ? 'test' : difficulty.toLowerCase();
       const boards = BOARDS[boardType];
