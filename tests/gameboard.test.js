@@ -91,8 +91,16 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
 
   // Set the initial board to the test board
   await page.evaluate(() => {
-    const { selectBoard } = require('../src/GameBoard');
-    selectBoard('test', true);
+    const selectBoard = (difficulty, isTest) => {
+      const boardType = isTest ? 'test' : difficulty.toLowerCase();
+      const boards = BOARDS[boardType];
+      if (boards && boards.length > 0) {
+        const selectedBoard = boards[0];
+        return selectedBoard.initial;
+      }
+      return [];
+    };
+    window.board = selectBoard('test', true);
   });
 
   // Enter the number 1 into the first cell
