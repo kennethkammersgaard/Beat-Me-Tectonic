@@ -91,7 +91,8 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
 
   // Set the initial board to the test board
   await page.evaluate(() => {
-    window.updateBoard(0, 'test');
+    const { selectBoard } = require('../src/GameBoard');
+    selectBoard('test', true);
   });
 
   // Enter the number 1 into the first cell
