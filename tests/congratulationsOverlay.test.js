@@ -10,11 +10,11 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
       test: [
         {
           initial: [
-            [0, 2, 3, 4],
-            [3, 4, 1, 5],
-            [1, 2, 3, 2],
-            [5, 4, 5, 1],
-            [3, 1, 2, 4],
+            [0, 0, 0, 0],
+            [3, 0, 0, 5],
+            [0, 0, 3, 2],
+            [5, 0, 0, 0],
+            [0, 0, 0, 4],
           ],
           end: [
             [1, 2, 3, 4],
@@ -47,7 +47,9 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
         } else {
           console.log(`Celle: row ${row}, col ${col} er allerede udfyldt med værdi: ${initialBoard[row][col]}`);
         }
+      }
     }
+  });
 
   // Check if the overlay with Congratulations is shown
   console.log('Tjekker om overlay vises');
@@ -57,5 +59,4 @@ test('Vis overlay når hele boardet er blevet fyldt ud', async ({ page }) => {
   const overlayText = await overlay.textContent();
   console.log(`Overlay tekst: ${overlayText}`);
   await expect(overlay).toHaveText(/Congratulations! You completed the game!/);
-};
 });
