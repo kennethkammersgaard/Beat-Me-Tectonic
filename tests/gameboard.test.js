@@ -25,15 +25,15 @@ test('Tjek om bruger kan vælge sværhedsgrad', async ({ page }) => {
   // Select the medium difficulty
   await page.selectOption('select[data-testid="difficulty-select"]', 'Medium');
 
-  // Click the New game button
+  // Click the Start button
   await page.click('button:has-text("Start")');
+
+  // Wait for the game board to be visible
+  await page.waitForSelector('.board', { state: 'visible' });
 
   // Check if the difficulty level is displayed correctly
   const difficultyText = await page.locator('.Timer').textContent();
   expect(difficultyText).toContain('Sværhedsgrad: Medium');
-  
-  // Navigate to the home page
-  await page.goto('http://localhost:5173');
 });
 
 

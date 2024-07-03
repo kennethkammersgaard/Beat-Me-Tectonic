@@ -60,16 +60,20 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
   useEffect(() => {
     if (resetGame || showDifficultyOverlay) {
       const boardType = isTest ? 'test' : difficulty.toLowerCase();
-      const boardIndex = Math.floor(Math.random() * BOARDS[boardType].length);
-      const selectedBoard = BOARDS[boardType][boardIndex];
-      setBoard(selectedBoard.initial);
-      setSolution(selectedBoard.end);
-      setBoardHeight(selectedBoard.initial.length);
-      setBoardWidth(selectedBoard.initial[0].length);
-      setGameOver(false);
-      setSelectedCell(null);
-      setSelectedNumber(null);
-      setInvalidCells([]);
+      if (BOARDS[boardType] && BOARDS[boardType].length > 0) {
+        const boardIndex = Math.floor(Math.random() * BOARDS[boardType].length);
+        const selectedBoard = BOARDS[boardType][boardIndex];
+        setBoard(selectedBoard.initial);
+        setSolution(selectedBoard.end);
+        setBoardHeight(selectedBoard.initial.length);
+        setBoardWidth(selectedBoard.initial[0].length);
+        setGameOver(false);
+        setSelectedCell(null);
+        setSelectedNumber(null);
+        setInvalidCells([]);
+      } else {
+        console.error(`No boards available for difficulty: ${boardType}`);
+      }
     }
   }, [resetGame, difficulty, showDifficultyOverlay, isTest]);
 
