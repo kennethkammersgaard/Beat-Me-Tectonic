@@ -120,15 +120,26 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
     };
 
     const selectedBoard = BOARDS['test'][0];
-    window.board = selectedBoard.initial;
-    window.solution = selectedBoard.end;
-    window.boardHeight = selectedBoard.initial.length;
-    window.boardWidth = selectedBoard.initial[0].length;
-    window.gameOver = false;
-    window.selectedCell = null;
-    window.selectedNumber = null;
-    window.invalidCells = [];
-    window.timer = 0;
+    const selectBoard = (difficulty, isTest) => {
+      const boardType = isTest ? 'test' : difficulty.toLowerCase();
+      const boards = BOARDS[boardType];
+      if (boards && boards.length > 0) {
+        const selectedBoard = boards[0];
+        window.board = selectedBoard.initial;
+        window.solution = selectedBoard.end;
+        window.boardHeight = selectedBoard.initial.length;
+        window.boardWidth = selectedBoard.initial[0].length;
+        window.gameOver = false;
+        window.selectedCell = null;
+        window.selectedNumber = null;
+        window.invalidCells = [];
+        window.timer = 0;
+      } else {
+        console.error(`No boards available for difficulty: ${boardType}`);
+      }
+    };
+
+    selectBoard('test', true);
   });
 
   // Enter the number 1 into the first cell
