@@ -112,7 +112,8 @@ export default function GameBoard({ setGameState, resetGame, difficulty, setDiff
     const newBoard = board.map((r) => [...r]);
     newBoard[row][col] = number;
 
-    if (isValidMove(newBoard, row, col)) {
+    const areas = BOARDS[difficulty.toLowerCase()][0].areas;
+    if (isValidMove(newBoard, row, col, areas)) {
       setBoard(newBoard);
       setSelectedCell(null);
       setSelectedNumber(null);

@@ -9,7 +9,7 @@ export const isValidMove = (board, row, col, areas) => {
         .flat()
         .filter(
             (_, index) =>
-                AREAS[Math.floor(index / BOARD_WIDTH)][index % BOARD_WIDTH] === area,
+                areas[Math.floor(index / board[0].length)][index % board[0].length] === area,
         ).length;
     if (value > areaSize) return false;
 
