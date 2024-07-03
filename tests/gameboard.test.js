@@ -146,18 +146,18 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
     };
 
     selectBoard('test');
+  });
 
-    // Insert remaining numbers from the end state
-    const endBoard = BOARDS['test'][0].end;
-    const initialBoard = BOARDS['test'][0].initial;
+  // Insert remaining numbers from the end state
+  const endBoard = BOARDS['test'][0].end;
+  const initialBoard = BOARDS['test'][0].initial;
 
-    for (let row = 0; row < endBoard.length; row++) {
-      for (let col = 0; col < endBoard[row].length; col++) {
-        if (initialBoard[row][col] === 0) {
-          const cell = await page.locator(`.cell[data-testid="cell-${row}-${col}"]`);
-          await cell.click();
-          await page.keyboard.press(`${endBoard[row][col]}`);
-        }
+  for (let row = 0; row < endBoard.length; row++) {
+    for (let col = 0; col < endBoard[row].length; col++) {
+      if (initialBoard[row][col] === 0) {
+        const cell = await page.locator(`.cell[data-testid="cell-${row}-${col}"]`);
+        await cell.click();
+        await page.keyboard.press(`${endBoard[row][col]}`);
       }
     }
 
