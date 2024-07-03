@@ -103,7 +103,7 @@ test('Cellevæg mellem to områder er tyk', async ({ page }) => {
   await expect(cell02).toHaveClass(/border-left/);
 });
 
-test('Cellevæg mellem 0,0 og 1,0 er tynd og grå', async ({ page }) => {
+test('Cellevæg mellem to celler i et område er tynd og grå', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
