@@ -89,77 +89,10 @@ test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
 
-  // Set the initial board to the test board
-  await page.evaluate(() => {
-    const BOARDS = {
-      test: [
-        {
-          initial: [
-            [0, 2, 3, 4],
-            [3, 4, 1, 5],
-            [1, 2, 3, 2],
-            [5, 4, 5, 1],
-            [3, 1, 2, 4],
-          ],
-          end: [
-            [1, 2, 3, 4],
-            [3, 4, 1, 5],
-            [1, 2, 3, 2],
-            [5, 4, 5, 1],
-            [3, 1, 2, 4],
-          ],
-          areas: [
-            ["A", "A", "B", "B"],
-            ["A", "A", "B", "B"],
-            ["C", "C", "D", "B"],
-            ["C", "C", "D", "D"],
-            ["C", "E", "D", "D"],
-          ],
-        },
-      ],
-    };
-
-    const selectedBoard = BOARDS['test'][0];
-    const selectBoard = (difficulty) => {
-      const boardType = difficulty.toLowerCase();
-      const boards = BOARDS[boardType];
-      if (boards && boards.length > 0) {
-        const selectedBoard = boards[0];
-/*        console.log('Selected Board Initial:', selectedBoard.initial);
-        selectedBoard.initial.forEach((row, rowIndex) => {
-          row.forEach((cell, colIndex) => {
-            console.log(`Initial Board [${rowIndex}][${colIndex}]:`, cell);
-          });
-        });
-*/        window.board = selectedBoard.initial;
-        window.board = selectedBoard.initial;
-        window.boardHeight = selectedBoard.initial.length;
-        window.boardWidth = selectedBoard.initial[0].length;
-        window.gameOver = false;
-        window.selectedCell = null;
-        window.selectedNumber = null;
-        window.invalidCells = [];
-        window.timer = 0;
-      } else {
-        console.error(`No boards available for difficulty: ${boardType}`);
-      }
-    };
-
-    selectBoard('test');
-  });
-
-  // Insert remaining numbers from the end state
-  const endBoard = BOARDS['test'][0].end;
-  const initialBoard = BOARDS['test'][0].initial;
-
-  for (let row = 0; row < endBoard.length; row++) {
-    for (let col = 0; col < endBoard[row].length; col++) {
-      if (initialBoard[row][col] === 0) {
-        const cell = await page.locator(`.cell[data-testid="cell-${row}-${col}"]`);
-        await cell.click();
-        await page.keyboard.press(`${endBoard[row][col]}`);
-      }
-    }
+  // Enter the number 1 into the first cell
+  const firstCell = await page.locator('.cell').first();
+  await firstCell.click();
+  await page.keyboard.press('1');
 
   // Check if the overlay with Congratulations is shown
   const overlay = await page.locator('.overlay-inner');
