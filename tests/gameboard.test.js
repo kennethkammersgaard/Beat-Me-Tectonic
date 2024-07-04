@@ -61,9 +61,6 @@ test('Første celle bliver grøn, når man indtaster det rigtige tal 1', async (
 
   // Press the '1' key
   await page.keyboard.press('1');
-  const firstCell = await page.locator('.cell').first();
-  firstCell.textContent = '1';
-  const firstCell = await page.locator('.cell').first();
   firstCell.textContent = '1';
 
   // Check if the first cell has the 'correct' class
@@ -115,7 +112,6 @@ test('Celle bliver rød, når der bliver indtastet forkert værdi', async ({ pag
   // Enter an incorrect number (2) into the first cell
   await firstCell.click();
   await page.keyboard.press('2');
-  const firstCell = await page.locator('.cell').first();
   firstCell.textContent = '2';
 
   // Check if the cell has the 'incorrect' class (which should make it red)
