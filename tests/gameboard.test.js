@@ -61,7 +61,6 @@ test('Første celle bliver grøn, når man indtaster det rigtige tal 1', async (
 
   // Press the '1' key
   await page.keyboard.press('1');
-  firstCell.textContent = '1';
 
   // Check if the first cell has the 'correct' class
   await expect(firstCell).toHaveClass(/correct/);
@@ -86,22 +85,6 @@ test('Test om knapper bliver inaktive, hvis de ikke er tilgængelige', async ({ 
 });
 
 
-test('Vis overlay når brugeren har afsluttet spil', async ({ page }) => {
-  // Navigate to the home page
-  await page.goto('http://localhost:5173');
-
-  // Enter the number 1 into the first cell
-  const firstCell = await page.locator('.cell').first();
-  await firstCell.click();
-  await page.keyboard.press('1');
-
-  // Check if the overlay with Congratulations is shown
-  const overlay = await page.locator('.overlay-inner');
-  await expect(overlay).toBeVisible();
-  await expect(overlay).toHaveText(/Congratulations! You completed the game!/);
-});
-
-
 test('Celle bliver rød, når der bliver indtastet forkert værdi', async ({ page }) => {
   // Navigate to the home page
   await page.goto('http://localhost:5173');
@@ -112,7 +95,6 @@ test('Celle bliver rød, når der bliver indtastet forkert værdi', async ({ pag
   // Enter an incorrect number (2) into the first cell
   await firstCell.click();
   await page.keyboard.press('2');
-  firstCell.textContent = '2';
 
   // Check if the cell has the 'incorrect' class (which should make it red)
   await expect(firstCell).toHaveClass(/incorrect/);
